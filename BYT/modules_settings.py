@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 
 try:
@@ -16,7 +15,7 @@ INSTALLED_EXTRA_APPS = [
 ]
 
 OWN_APPS = [
-
+    'accounts',
 ]
 
 EXTRA_MIDDLEWARE_CLASSES = [

@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ##########################################################
-#Basic flags / parameters
+# Basic flags / parameters
 ##########################################################
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
@@ -20,7 +20,7 @@ CONFIG_ALLOWED_HOSTS = [
 MAX_UPLOAD_SIZE = 104785760
 
 ##########################################################
-#DATABASES
+# DATABASES
 ##########################################################
 
 DATABASES = {
@@ -31,15 +31,16 @@ DATABASES = {
 }
 
 ##########################################################
-#CORS HEADERS
+# CORS HEADERS
 ##########################################################
 
 CORS_ALLOWED_ORIGINS = [
+    'https://localhost:8000',
     'https://localhost:8080',
     'https://localhost:8888',
     'https://localhost:8083',
+    'https://127.0.0.1:8000',
     'https://127.0.0.1:8083',
     'https://127.0.0.1:8888',
     'https://127.0.0.1:8080'
 ]
-

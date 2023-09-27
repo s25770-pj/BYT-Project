@@ -1,10 +1,10 @@
 from pathlib import Path
 import os
 
-SECRET_KEY = 'django-insecure-yza7qxc@j!+_ujf@^_vf2*y!4wwu_)yswq(aso5r&o#rowl-!s'
-
 from .local_settings import *
 from .modules_settings import *
+
+SECRET_KEY = 'django-insecure-yza7qxc@j!+_ujf@^_vf2*y!4wwu_)yswq(aso5r&o#rowl-!s'
 
 if DEBUG:
     ALLOWED_HOSTS = [
@@ -69,7 +69,7 @@ ROOT_URLCONF = 'BYT.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
