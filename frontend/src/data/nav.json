@@ -1,0 +1,123 @@
+{
+    "pl":{
+        "main":{
+            "buttons":[
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"puzzle",
+                "alt":"Rozpocznij"
+                },
+                "text": "Rozpocznij",
+                "class": ["btn","btn-custom"]
+            },
+            {
+                "to": "/panel",
+                "icon": 
+                {
+                "src":null,
+                "alt":"Rozpocznij"
+                },
+                "text": "Rozpocznij",
+                "class": ["btn","btn-custom"]
+            }]
+        },
+        "user":{
+            "buttons":[
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["icon","justify-content-start"]
+                },
+                "text": "profil",
+                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["icon","justify-content-start"]
+                },
+                "text": "nauka",
+                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["icon","justify-content-start"]
+                },
+                "text": "ćwiczenia",
+                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["icon","justify-content-start"]
+                },
+                "text": "ekwipunek",
+                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["icon","justify-content-start"]
+                },
+                "text": "wyloguj",
+                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+            }]
+        },
+        "footer":{
+            "buttons":[
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"puzzle",
+                "alt":"Rozpocznij"
+                },
+                "text": "About",
+                "class": ["footer-link"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":null,
+                "alt":"Rozpocznij"
+                },
+                "text": "Rozpocznij",
+                "class": ["footer-link"]
+            }]
+        }
+    },
+    "en":{
+        "main":{
+            "buttons":[
+            {
+                "to": "/",
+                "icon": {
+                "src":"/image1.png",
+                "alt":"Rozpocznij"
+                },
+                "text": "Rozpocznij",
+                "class": ["btn"]
+            }]
+        }
+        
+    }
+}
