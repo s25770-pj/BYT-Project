@@ -18,7 +18,7 @@ admin.site.unregister(Group)
 admin.site.register(Group, CustomGroupAdmin)
 
 
-class CustomUserAdmin(UserAdmin):
+class UserAdmin(UserAdmin):
     model = Parent
     list_display = ('login', 'email', 'is_staff', 'is_active', 'role')
     list_filter = ('is_staff', 'is_active')

@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from .serializers import RegistrationSerializer
 from django.contrib.auth import logout
 from .models import Parent, Child
+from django.utils.translation import gettext_lazy as _
 
 
 @api_view(['DELETE'])
@@ -16,8 +17,10 @@ def delete_account_view(request):
         user.delete()
         logout(request)
 
-        return Response({'message': 'Konto zostało usunięte'}, status=status.HTTP_204_NO_CONTENT)
-    return Response({'message': 'Nieprawidłowe żądanie'}, status=status.HTTP_400_BAD_REQUEST)
+        message = _('Konto zostało usunięte')
+        return Response({'message': message}, status=status.HTTP_204_NO_CONTENT)
+    message = _('Nieprawidłowe żądanie')
+    return Response({'message': message}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
@@ -28,8 +31,10 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return Response({'message:': 'Zalogowano pomyślnie'}, status=status.HTTP_200_OK)
-    return Response({'message': ' Błąd logowania'}, status=status.HTTP_401_UNAUTHORIZED)
+            message = _('Zalogowano pomyślnie')
+            return Response({'message:': message}, status=status.HTTP_200_OK)
+    message = _('Błąd logowania')
+    return Response({'message': message}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['POST'])
@@ -39,7 +44,8 @@ def register_parent_view(request):
         if serializer.is_valid():
             user = serializer.save()
             login(request, user)
-            return Response({'message': 'Zarejestrowano pomyślnie'}, status=status.HTTP_200_OK)
+            message = _('Zarejestrowano pomyślnie')
+            return Response({'message': message}, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -59,7 +65,9 @@ def register_child_view(request):
                 password=password,
             )
             child.save()
-            return Response({'message': 'Konto dziecka stworzone pomyślnie'}, status=status.HTTP_201_CREATED)
+            message = _('Konto dziecka stworzone pomyślnie')
+            return Response({'message': message}, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    return Response({'message': 'Nieprawidłowe dane'}, status=status.HTTP_400_BAD_REQUEST)
+    message = _('Nieprawidłowe dane')
+    return Response({'message': message}, status=status.HTTP_400_BAD_REQUEST)
