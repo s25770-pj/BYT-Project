@@ -52,7 +52,6 @@ def register_parent_view(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-@authentication_classes([JWTAuthentication])
 def register_child_view(request):
     if request.method == 'POST':
         serializer = RegistrationSerializer(data=request.data)
