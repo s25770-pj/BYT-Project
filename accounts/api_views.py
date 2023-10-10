@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate, login
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .serializers import RegistrationSerializer
 from django.contrib.auth import logout
 from .models import Parent, Child
 from django.utils.translation import gettext_lazy as _
+from rest_framework
 
 
 @api_view(['DELETE'])
@@ -51,6 +52,7 @@ def register_parent_view(request):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+@authentication_classes([JWTAuthentication])
 def register_child_view(request):
     if request.method == 'POST':
         serializer = RegistrationSerializer(data=request.data)
