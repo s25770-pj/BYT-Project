@@ -7,7 +7,6 @@ from .serializers import RegistrationSerializer
 from django.contrib.auth import logout
 from .models import Parent, Child
 from django.utils.translation import gettext_lazy as _
-from rest_framework
 
 
 @api_view(['DELETE'])
