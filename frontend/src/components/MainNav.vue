@@ -27,7 +27,6 @@
     },
     setup(props){
       const buttons = ref(menuData[props.lang][props.nav].buttons) || null;
-      console.log(buttons);
       return {buttons}
   }
   }
@@ -35,7 +34,7 @@
 
 <style scoped>
 .home {
-  background-image: url('@/assets/image/backgrounds/background-home.svg');
+  background-image: url('@/assets/images/backgrounds/background-home.svg');
   background-size: cover;
 }
 .button-container {

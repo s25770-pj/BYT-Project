@@ -3,11 +3,12 @@
         "main":{
             "buttons":[
             {
-                "to": "/",
+                "to": "/logIn",
                 "icon": 
                 {
-                "src":"puzzle",
-                "alt":"Rozpocznij"
+                "src":"start",
+                "alt":"start icon",
+                "class":["icon"]
                 },
                 "text": "Rozpocznij",
                 "class": ["btn","btn-custom"]
@@ -26,7 +27,7 @@
         "user":{
             "buttons":[
             {
-                "to": "/",
+                "to": "/panel/profil",
                 "icon": 
                 {
                 "src":"profil",
@@ -37,10 +38,10 @@
                 "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
             },
             {
-                "to": "/",
+                "to": "/panel/learning",
                 "icon": 
                 {
-                "src":"profil",
+                "src":"learning",
                 "alt":"profil_picture",
                 "class":["icon","justify-content-start"]
                 },
@@ -51,7 +52,7 @@
                 "to": "/",
                 "icon": 
                 {
-                "src":"profil",
+                "src":"exercising",
                 "alt":"profil_picture",
                 "class":["icon","justify-content-start"]
                 },
@@ -62,7 +63,7 @@
                 "to": "/",
                 "icon": 
                 {
-                "src":"profil",
+                "src":"bag",
                 "alt":"profil_picture",
                 "class":["icon","justify-content-start"]
                 },
@@ -73,7 +74,7 @@
                 "to": "/",
                 "icon": 
                 {
-                "src":"profil",
+                "src":"logOut",
                 "alt":"profil_picture",
                 "class":["icon","justify-content-start"]
                 },
@@ -84,13 +85,14 @@
         "footer":{
             "buttons":[
             {
-                "to": "/",
+                "to": "/aboutUs",
                 "icon": 
                 {
-                "src":"puzzle",
-                "alt":"Rozpocznij"
+                "src":"aboutUs",
+                "alt":"icon",
+                "class":["icon","icon_min"]
                 },
-                "text": "About",
+                "text": "o nas",
                 "class": ["footer-link"]
             },
             {
@@ -98,9 +100,19 @@
                 "icon": 
                 {
                 "src":null,
-                "alt":"Rozpocznij"
+                "alt":"icon"
                 },
-                "text": "Rozpocznij",
+                "text": "regulamin",
+                "class": ["footer-link"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":null,
+                "alt":"icon"
+                },
+                "text": "kontakt",
                 "class": ["footer-link"]
             }]
         }

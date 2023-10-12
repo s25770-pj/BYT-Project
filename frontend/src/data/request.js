@@ -1,0 +1,19 @@
+const apiConfig = {
+    URL:{
+        development:"",
+        production:""
+    },
+    endpoints:{
+        GET:{
+        progress:{
+            development:"progress.json",
+            production:""
+        },
+        balance:{
+            development:"userBalance.json",
+            production:""
+        }
+    }
+    }
+}
+export default apiConfig;

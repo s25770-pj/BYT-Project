@@ -57,7 +57,7 @@ export default {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -3px; 
+  bottom: -10px; 
   width: 0;
   height: 2px; 
   background-color: var(--background); 

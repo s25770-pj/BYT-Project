@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Kacper",
+      "surname": "Pecka",
+      "role": "Frontend Developer",
+      "photo": null,
+      "info":{
+        "link":{
+          "github":"github.com"
+        }
+  
+      }
+    },
+    {
+      "name": "Jakub",
+      "surname": "Pobłocki",
+      "role": "Backend Developer",
+      "photo": null,
+      "info":{
+        "link":{
+          "github":"github.com"
+        }
+  
+      }
+    },
+    {
+      "name": "Andrzej",
+      "surname": "Ebertowski",
+      "role": "UI/UX Designer",
+      "photo": null,
+      "info":{
+        "link":{
+          "github":"github.com"
+        }
+  
+      }
+    },
+    {
+      "name": "Mateusz",
+      "surname": "Wiśniewski",
+      "role": "Project Manager",
+      "photo": null,
+      "info":{
+        "link":{
+          "github":"github.com"
+        }
+  
+      }
+    },
+    {
+      "name": "Jakub",
+      "surname": "Wiśniewski",
+      "role": "Project Manager",
+      "photo": null,
+      "info":{
+        "link":{
+          "github":"github.com"
+        }
+  
+      }
+    }
+  ]
+  

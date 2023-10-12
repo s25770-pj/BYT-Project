@@ -24,7 +24,7 @@
 
 <style scoped>
 .home {
-  background-image: url('@/assets/image/backgrounds/background-home.svg');
+  background-image: url('@/assets/images/backgrounds/background-home.svg');
   background-size: cover;
 }
 .button-container {

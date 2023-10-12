@@ -6,4 +6,13 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from '@/router/index.js';
 
-createApp(App).use(router).mount('#app');
+import Highcharts from 'highcharts';
+import HighchartsVue from 'highcharts-vue';
+
+const app = createApp(App);
+
+app.use(router);
+app.use(HighchartsVue, { Highcharts });
+
+app.mount('#app');
+
