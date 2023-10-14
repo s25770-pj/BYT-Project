@@ -33,7 +33,7 @@ export default {
 .contener
 {
   position: fixed;
-  right: 5%;
+  right: 3%;
   top:10%;
   min-width: 80vw;
   min-height: 80vh;

@@ -12,6 +12,10 @@ const apiConfig = {
         balance:{
             development:"userBalance.json",
             production:""
+        },
+        quests:{
+            development:"quests.json",
+            production:""
         }
     }
     }

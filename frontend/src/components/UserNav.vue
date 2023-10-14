@@ -29,14 +29,26 @@ export default {
 .menu {
   background: linear-gradient(to bottom, rgb(241 235 235 / 58%), rgb(241 235 235 / 49%));
   color: #333;
-  width: 10%;
+  width: 15%;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  overflow-y: auto; 
 }
-
+.menu > div > div
+{
+  width: 80%;
+}
+.menu > div
+{
+  width: 80%;
+}
+.menu > div{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
 ul {
   list-style-type: none;
   padding: 0;

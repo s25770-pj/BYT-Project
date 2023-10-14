@@ -35,7 +35,7 @@
                 "class":["icon","justify-content-start"]
                 },
                 "text": "profil",
-                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+                "class": ["user-btn","d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/panel/learning",
@@ -46,7 +46,7 @@
                 "class":["icon","justify-content-start"]
                 },
                 "text": "nauka",
-                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+                "class": ["user-btn","d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/",
@@ -57,7 +57,7 @@
                 "class":["icon","justify-content-start"]
                 },
                 "text": "ćwiczenia",
-                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+                "class": ["user-btn","d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/",
@@ -68,7 +68,7 @@
                 "class":["icon","justify-content-start"]
                 },
                 "text": "ekwipunek",
-                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+                "class": ["user-btn","d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/",
@@ -79,7 +79,7 @@
                 "class":["icon","justify-content-start"]
                 },
                 "text": "wyloguj",
-                "class": ["btn","user-btn","d-flex","align-items-center","m-2"]
+                "class": ["user-btn","d-flex","align-items-center","m-2"]
             }]
         },
         "footer":{

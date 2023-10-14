@@ -1,31 +1,40 @@
 <template>
-  <div class="static-bar">
-    <div class="static-item">
-      <img src="@/assets/icons/bag.png" alt="Gold" class="static-icon" />
-      <div class="static-value">{{gold}}</div>
-    </div>
-    <div class="static-item">
-      <img src="@/assets/icons/bag.png" alt="Gem" class="static-icon" />
-      <div class="static-value">{{gem}}</div>
-    </div>
-    <div class="static-item">
-      <img src="@/assets/icons/bag.png" alt="Stricks" class="static-icon" />
-      <div class="static-value">{{strick}}</div>
-    </div>
+    <div class="static-bar">
+      <GenericLoading :isLoading="isLoading">
+      <div class="static-item">
+        <img src="@/assets/icons/bag.png" alt="Gold" class="static-icon" />
+        <div class="static-value">{{gold}}</div>
+      </div>
+      </GenericLoading>
+      <GenericLoading :isLoading="isLoading">
+      <div class="static-item">
+        <img src="@/assets/icons/bag.png" alt="Gem" class="static-icon" />
+        <div class="static-value">{{gem}}</div>
+      </div>
+      </GenericLoading>
+      <GenericLoading :isLoading="isLoading">
+      <div class="static-item">
+        <img src="@/assets/icons/bag.png" alt="Stricks" class="static-icon" />
+        <div class="static-value">{{strick}}</div>
+      </div>
+      </GenericLoading>
   </div>
 </template>
 <script>
 import {fetchDataFromEndpoint} from '@/function/fetchData.js';
 import {convertNumber} from '@/function/convertNumber.js';
-import {ref} from 'vue';
+import {ref, onMounted} from 'vue';
+import GenericLoading from '@/components/GenericLoading.vue';
 
 export default {
+  components: { GenericLoading },
   setup() {
+    const isLoading = ref(true);
     const gold = ref(null);
     const gem = ref(0);
     const strick = ref(0);
 
-    fetchDataFromEndpoint("GET", "balance")
+    onMounted(()=>fetchDataFromEndpoint("GET", "balance")
       .then(response => {
         gold.value = convertNumber(response.gold);
         gem.value = convertNumber(response.gem);
@@ -34,8 +43,12 @@ export default {
       .catch(error => {
         console.error('Błąd podczas pobierania danych:', error);
       })
-    return {gold,gem,strick}
-  },
+      .finally(() => {
+        isLoading.value = false;
+      })
+  )
+  return {gold,gem,strick,isLoading}
+  }
 }
 </script>
 
@@ -50,6 +63,7 @@ export default {
   position: fixed;
   right: 5%;
   top:2%;
+  height: 5vh;
 }
 
 .static-item {

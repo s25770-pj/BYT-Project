@@ -12,16 +12,13 @@
       </div>
       <div class="col-md-3 userData">
         <div class="chart-container progressUser">
-           
+           <DailyChest />
         </div>
         <div class="chart-container progressUser">
-          <h2>Twoje zadania na dziś</h2>
-          <DailyQuests delay="6000" />
+          <DailyQuests delay=6000 />
         </div>
         <div class="chart-container progressUser">
-          <h2>Cel tygodniowy</h2>
-              <ProgressBar/>
-              <button class="btn">Odbierz nagrode</button>
+            <ProgressBar/>
         </div>
       </div>
     </div>
@@ -32,7 +29,7 @@
 import ProgressBar from '@/components/Panel/components/ProgressBar.vue';
 import DailyQuests from '@/components/Panel/components/DailyQuests.vue';
 import HighchartsChart from '@/components/ChartHighcharts.vue';
-
+import DailyChest from '@/components/Panel/components/DailyChest.vue';
 
 import { ref} from 'vue';
 
@@ -42,6 +39,7 @@ export default {
     ProgressBar,
     DailyQuests,
     HighchartsChart,
+    DailyChest
   },
   setup() {
     const date = ref(new Date().getDate()+3);
@@ -107,18 +105,6 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 75vh;
 }
-.progressUser
-{
-  display: flex;
-  align-content: space-between;
-  justify-content: center;
-}
-.progressUser h2
-{
-  color:#333;
-  font-size: 1.5em;
-  text-align: center;
-}
 .static-container {
   display: flex;
   flex-direction: column;
@@ -144,7 +130,7 @@ export default {
   display: flex;
   align-content: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .chart{
   aspect-ratio: 16/9;

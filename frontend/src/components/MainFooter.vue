@@ -28,25 +28,25 @@ export default {
   },
 };
 </script>
-
-<style scope>
-:root
-{
-  --color:#323232;
-  --background:var(--color);
-  --color-dark:#1d1d1d;
-  font-size: 16px;
+<style>
+:root{
+  --color:#000444;
 }
+</style>
+<style scoped>
 .footer {
   font-size: 1.1em;
   color: var(--color);
   padding: 20px 0; 
   position: fixed;
   bottom: 0;
+  background-color: transparent;
+  border:none;
 }
 
 .footer-link {
   color: var(--color);
+  border:none;
   margin-right: 20px;
   text-decoration: none;
   position: relative;
