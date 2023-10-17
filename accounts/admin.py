@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 
 
 class CustomGroupAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_permissions')
+    list_display = ('id', )
 
     def get_permissions(self, obj):
         permissions = obj.permissions.all()
@@ -46,5 +46,5 @@ class ChildAdmin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Parent, CustomUserAdmin)
+admin.site.register(Parent, CustomGroupAdmin)
 admin.site.register(Child, ChildAdmin)
