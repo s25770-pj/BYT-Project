@@ -2,10 +2,7 @@
   <div class="navbar">
     
     <div class="menu d-flex flex-row justify-content-center align-items-center">
-        <div class="baner d-flex flex-column justify-content-center align-items-center">
-            <div class="logo">EduPJWSTK</div>
-            <div>Tryb:<span>dziecka</span></div>
-        </div>
+        <router-link to="/panel"><BanerBox /></router-link>
         <MainNav lang="pl" nav="user"/>
     </div>
   </div>
@@ -13,9 +10,11 @@
 
 <script>
 import MainNav from './MainNav.vue';
+import BanerBox from './BanerBox.vue';
 
 export default {
   components:{
+    BanerBox,
     MainNav
   }
 };
@@ -26,32 +25,30 @@ export default {
 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.navbar {
-  position: relative;
-}
-.baner
-{
-    position: absolute;
-    width: 100%;
-    height: 5%;
-    top:5%;
-}
-.logo
-{
-    font-size: 2em;
-    font-weight: 700;
-}
+
 .menu {
   background: linear-gradient(to bottom, rgb(241 235 235 / 58%), rgb(241 235 235 / 49%));
   color: #333;
-  width: 200px;
+  width: 15%;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  overflow-y: auto; 
+  height: 100vh;
 }
-
+.menu > div > div
+{
+  width: 80%;
+}
+.menu > div
+{
+  width: 80%;
+}
+.menu > div{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
 ul {
   list-style-type: none;
   padding: 0;

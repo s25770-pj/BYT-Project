@@ -1,6 +1,6 @@
 <template>
     <div>
-     <NavList :buttons="buttons" />
+     <NavList :buttons="buttons" :baseStyle="baseStyle"/>
     </div>
 </template>
 
@@ -16,6 +16,7 @@
       NavList,
     },
     props:{
+        baseStyle:Object,
         lang:{
             type:String,
             required:true
@@ -27,7 +28,6 @@
     },
     setup(props){
       const buttons = ref(menuData[props.lang][props.nav].buttons) || null;
-      console.log(buttons);
       return {buttons}
   }
   }
@@ -35,7 +35,7 @@
 
 <style scoped>
 .home {
-  background-image: url('@/assets/image/backgrounds/background-home.svg');
+  background-image: url('@/assets/images/backgrounds/background-home.svg');
   background-size: cover;
 }
 .button-container {

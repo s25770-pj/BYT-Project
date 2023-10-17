@@ -1,0 +1,5 @@
+{
+    "categories": ["Dzień 1", "Dzień 2", "Dzień 3", "Dzień 4", "Dzień 5", "Dzień 6", "Dzień 7"],
+    "userProgress": [10, 20, 300, 40, 50, 600, 70],
+    "averageProgress": [30, 40, 305, 45, 55, 60, 50]
+  }

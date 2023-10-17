@@ -1,0 +1,18 @@
+:root{
+    --font-size-btn:24px;
+    --color-btn:#b4b4b4;
+    --bg-btn:#50c0bd;
+    --border-btn:5px solid #8bf9f5;
+    --border-radius-btn:15px;
+}
+:root.dark{
+    --font-size-btn:24px;
+    --color-btn:#ffffff;
+    --bg-btn:#50c0bd;
+    --border-btn:5px solid #8bf9f5;
+    --border-radius-btn:15px;
+}
+a
+{
+    text-decoration: none;
+}
