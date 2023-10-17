@@ -1,11 +1,11 @@
 <template>
-  <button :class="button.class" :disabled="button.isButtonDisabled">
-    <router-link :to="button.to" v-if="button.to">
-      <img :src="src" :alt="button.icon.alt" v-show="button.icon.src" :class="button.icon.class">
+  <button :class="button.class" :disabled="button.isButtonDisabled" :style="btnStyle">
+    <router-link :to="button.to" v-if="button.to" :class="button.icon.class">
+      <img :src="src" :alt="button.icon.alt" v-show="button.icon.src" :style="imgStyle">
       <span>{{ button.text }}</span>
     </router-link>
-    <div v-else>
-      <img :src="src" :alt="button.icon.alt" :class="button.icon.class" v-show="button.icon.src">
+    <div v-else :class="button.icon.class">
+      <img :src="src" :alt="button.icon.alt"  v-show="button.icon.src" :style="imgStyle">
       <span>{{ button.text }}</span>
     </div>
   </button>
@@ -14,21 +14,14 @@
 <script>
 const requireIcon = require.context('@/assets/icons', false, /\.png$/);
 const icons = {};
+import {ref,onMounted} from 'vue';
 
 export default {
   props: {
+    baseStyle:Object,
     button: {
       type: Object,
-      default: () => ({
-        text: "Przykładowy przycisk",
-        icon: {
-          src: "domyslny-obrazek.png",
-          alt: "Opis domyślnego obrazka",
-          class: "domyslna-klasa-obrazka"
-        },
-        to: "/domyslna-sciezka",
-        class: "domyslna-klasa-przycisku"
-      })
+      default: () => ({})
     }
   },
   setup(props) {
@@ -36,16 +29,57 @@ export default {
       const iconName = filename.replace(/^\.\/(.*)\.\w+$/, '$1');
       icons[iconName] = requireIcon(filename);
     });
-
+    const btnStyle = ref(null);
+    const imgStyle = ref(null);
+    onMounted(() => {
+      if(props.baseStyle)
+      {
+        
+        if (props.baseStyle.btn) {
+          btnStyle.value = props.baseStyle.btn;
+        }
+        if (props.baseStyle.img) {
+          imgStyle.value = props.baseStyle.img;
+        }
+      } 
+        console.log(btnStyle.value,imgStyle.value)
+    })
+    
     return {
+      imgStyle,
+      btnStyle,
       icons,
       src: icons[props.button.icon.src]
     };
   }
 };
 </script>
-
 <style scoped>
+button {
+  
+  margin: 10px 0;
+  padding: 10px;
+
+  font-size: var(--font-size-btn);
+  background-color: var(--bg-btn);
+  
+  border: var(--border-btn);
+  transition: all 0.5s ease-in-out;
+  border-radius:var(--border-radius-btn);
+}
+img
+{
+  width: 2em;
+  height: 2em;
+}
+a
+{
+  color:var(--color-btn);
+  width: 100%;
+}
+</style>
+
+<!--style scoped>
 *{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -56,15 +90,6 @@ export default {
   transform: scale(1.015);
   color:#fff;
   width: 100%;
-}
-.btn-custom {
-  color:#efefef;
-  border: #3634b980 5px solid;
-  margin: 10px 0;
-  padding: 20px;
-  width: 100%;
-  background-color: #3b39cb;
-  transition: all 0.5s ease-in-out;
 }
 .icon
 {
@@ -87,12 +112,6 @@ export default {
   width: 90%;
 }
 
-.btn:hover {
-  border-color: #3b39cb;
-  background-color: #3634b9;
-  transform: scale(1.015);
-  color: #fff;
-}
 
 
 button[disabled] {
@@ -184,7 +203,7 @@ button > *
   transition: width 0.3s, border-color 0.3s;
 }
 .user-btn:hover {
-  background-position: right; /* Po najechaniu tło przesuwa się w lewo */
+  background-position: right;
 }
 .user-btn:hover::before {
   width: 0;
@@ -193,4 +212,4 @@ button > *
   border-color: transparent transparent transparent #50c0bd;
   right: -20px;
 }
-</style>
+</style-->

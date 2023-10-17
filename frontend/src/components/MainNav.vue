@@ -1,6 +1,6 @@
 <template>
     <div>
-     <NavList :buttons="buttons" />
+     <NavList :buttons="buttons" :baseStyle="baseStyle"/>
     </div>
 </template>
 
@@ -16,6 +16,7 @@
       NavList,
     },
     props:{
+        baseStyle:Object,
         lang:{
             type:String,
             required:true

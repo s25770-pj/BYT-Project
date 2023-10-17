@@ -8,20 +8,21 @@
                 {
                 "src":"start",
                 "alt":"start icon",
-                "class":["icon"]
+                "class":["d-flex","align-items-center","justify-content-center"]
                 },
-                "text": "Rozpocznij",
-                "class": ["btn","btn-custom"]
+                "text": "Zaloguj się",
+                "class": []
             },
             {
                 "to": "/panel",
                 "icon": 
                 {
-                "src":null,
-                "alt":"Rozpocznij"
+                "src":"start",
+                "alt":"Rozpocznij",
+                "class":["d-flex","align-items-center","justify-content-center"]
                 },
                 "text": "Rozpocznij",
-                "class": ["btn","btn-custom"]
+                "class": []
             }]
         },
         "user":{

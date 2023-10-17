@@ -4,6 +4,7 @@
       v-for="(button, index) in buttons"
       :key="index"
       :button ="button"
+      :baseStyle="baseStyle"
     /> 
   </div>
 </template>
@@ -16,6 +17,7 @@ export default {
         CustomButton
     },
   props: {
+    baseStyle:Object,
     buttons: {
         type: Array,
         required:true,

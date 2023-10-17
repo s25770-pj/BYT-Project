@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid home">
     <div class="row justify-content-center align-items-center vh-100">
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="button-container">
-          <MainNav lang="pl" nav="main"/>
+          <MainNav lang="pl" nav="main" :baseStyle="baseStyle"/>
         </div>
       </div>
     </div>
@@ -19,6 +19,22 @@
     components:{
       MainNav,
     },
+    setup()
+    {
+      return {
+        baseStyle:{
+          btn:{
+            margin: '10px 0',
+            padding: '20px',
+            width: '100%'
+          },
+          img:{
+            position:'relative',
+            left:'-2em'
+          }
+        }
+      }
+    }
   }
   </script>
 
@@ -27,11 +43,4 @@
   background-image: url('@/assets/images/backgrounds/background-home.svg');
   background-size: cover;
 }
-.button-container {
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  width: 100%;
-}
 </style>
-  

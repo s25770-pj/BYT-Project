@@ -16,6 +16,10 @@ const apiConfig = {
         quests:{
             development:"quests.json",
             production:""
+        },
+        userChartProgress:{
+            development:"userChartProgress.json",
+            production:""
         }
     }
     }

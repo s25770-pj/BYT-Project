@@ -18,6 +18,7 @@
         <div class="static-value">{{strick}}</div>
       </div>
       </GenericLoading>
+      <SettingPage />
   </div>
 </template>
 <script>
@@ -25,9 +26,9 @@ import {fetchDataFromEndpoint} from '@/function/fetchData.js';
 import {convertNumber} from '@/function/convertNumber.js';
 import {ref, onMounted} from 'vue';
 import GenericLoading from '@/components/GenericLoading.vue';
-
+import SettingPage from '@/components/Panel/components/SettingPage.vue';
 export default {
-  components: { GenericLoading },
+  components: { GenericLoading,SettingPage },
   setup() {
     const isLoading = ref(true);
     const gold = ref(null);

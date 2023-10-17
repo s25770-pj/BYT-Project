@@ -1,5 +1,6 @@
 <template>
   <div class="panel vh-100">
+    
   <ProgressUser />
   
   <UserNav lang="pl" nav="user"/>

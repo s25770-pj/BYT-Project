@@ -16,7 +16,6 @@
             </div>
       </div>
     </GenericLoadingVue>
-     
 </template>
 
 <script>
@@ -24,7 +23,6 @@ import { ref} from 'vue';
 import { fetchDataFromEndpoint } from '@/function/fetchData.js';
 import CustomButton from '@/components/CustomButton.vue';
 import GenericLoadingVue from '@/components/GenericLoading.vue';
-
 export default {
   components: {
     CustomButton,GenericLoadingVue

@@ -2,13 +2,16 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-9">
+        <GenericLoading :isLoading="isLoading">
         <div class="main-panel">
           <div class="row">
             <div class="col-md-12 col-sm-6">
               <HighchartsChart :chartOptions="chartOptions" class="chart" />
+              <BetterThen />
             </div>
           </div>
         </div>
+        </GenericLoading>
       </div>
       <div class="col-md-3 userData">
         <div class="chart-container progressUser">
@@ -28,10 +31,13 @@
 <script>
 import ProgressBar from '@/components/Panel/components/ProgressBar.vue';
 import DailyQuests from '@/components/Panel/components/DailyQuests.vue';
+import BetterThen from '@/components/Panel/components/BetterThen.vue';
 import HighchartsChart from '@/components/ChartHighcharts.vue';
 import DailyChest from '@/components/Panel/components/DailyChest.vue';
+import GenericLoading from '@/components/GenericLoading.vue';
+import {fetchDataFromEndpoint} from '@/function/fetchData.js';
 
-import { ref} from 'vue';
+import { ref,onMounted} from 'vue';
 
 
 export default {
@@ -39,10 +45,12 @@ export default {
     ProgressBar,
     DailyQuests,
     HighchartsChart,
-    DailyChest
+    DailyChest,
+    GenericLoading,
+    BetterThen
   },
   setup() {
-    const date = ref(new Date().getDate()+3);
+    const isLoading=ref(true);
     const chartOptions = ref({
       chart: {
         type: 'spline',
@@ -53,7 +61,7 @@ export default {
         text: 'Twój progres',
       },
       xAxis: {
-        categories: Array.from({ length: date.value }, (_, index) => index + 1),
+        categories: [],
       },
       yAxis: {
         title: {
@@ -68,29 +76,36 @@ export default {
       series: [
         {
           name: 'Twój progres',
-          data: Array.from({ length: date.value }, () => (Math.round(Math.random() * 100 * 100) / 100))
+          data: []
         },
         {
           name: 'Średni progres użytkowników',
-          data: Array.from({ length: date.value }, () => (Math.round(Math.random() * 100 * 100) / 100))
+          data: []
         },
       ],
       accessibility: {
         enabled: false,
       },
     });
+    onMounted(() => {
 
-    const dailyView = ref(false); 
+      fetchDataFromEndpoint("GET", "userChartProgress")
+      .then(response => {
+        chartOptions.value.xAxis.categories = response.categories; 
+        chartOptions.value.series[0].data = response.userProgress;
+        chartOptions.value.series[1].data = response.averageProgress;
+      })
+      .catch(error => {
+        console.error('Błąd podczas pobierania danych:', error);
+      })
+      .finally(() => {
+        isLoading.value = false;
+      })
 
-
-    const toggleView = () => {
-      dailyView.value = !dailyView.value;
-    };
-
+    });
     return {
       chartOptions,
-      toggleView,
-      dailyView,
+      isLoading
     };
   },
 };
