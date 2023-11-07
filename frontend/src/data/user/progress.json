@@ -2,7 +2,7 @@
     "button":
         {
             "to": null,
-            "isButtonDisabled":true,
+            "isButtonDisabled":false,
             "icon": 
             {
             "src":"profil",

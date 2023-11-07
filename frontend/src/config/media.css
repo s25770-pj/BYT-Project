@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+  .leout-3x3 {
+    --grid-rows: 1fr 1fr 1fr 1fr;
+    --grid-cols: 1fr;
+    --grid-template-areas:
+      "chest "
+      "chart "
+      "progress"
+      "main";
+  }
+}

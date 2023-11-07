@@ -26,7 +26,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #3498db, #9b59b6);
+  background: linear-gradient(135deg, var(--primary-color), var(--second-color));
   position: relative;
 }
 

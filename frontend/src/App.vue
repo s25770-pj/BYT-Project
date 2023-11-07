@@ -1,16 +1,19 @@
 <template>
-  <div :class="viewStyle">
+  <div class="app">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  data(){
-        return{
-            viewStyle:["h-100" ,"w-100"]
-        }
-    }
+  name: 'App'
 };
 </script>
+<style scoped>
+.app
+{
+  background-image: var(--mainPage);
+  background-size: cover;
+  height:var(--page-height);
+}
+</style>

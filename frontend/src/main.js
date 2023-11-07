@@ -3,6 +3,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import 'normalize.css';
 
 import '@/config/variables.css';
+import '@/config/media.css';
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -24,5 +25,6 @@ app.use(HighchartsVue, { Highcharts });
 
 app.config.globalProperties.$isDarkMode = isDarkMode;
 app.config.globalProperties.$toggleDarkMode = toggleDarkMode;
+
 app.mount('#app');
 

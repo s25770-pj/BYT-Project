@@ -1,81 +1,116 @@
 <template>
-  <button :class="button.class" :disabled="button.isButtonDisabled" :style="btnStyle">
+  <button
+    :class="button.class"
+    :disabled="button.isButtonDisabled"
+    :style="btnStyle"
+    @mouseover="isHoveredBtn = true"
+    @mouseleave="isHoveredBtn = false"
+  >
     <router-link :to="button.to" v-if="button.to" :class="button.icon.class">
-      <img :src="src" :alt="button.icon.alt" v-show="button.icon.src" :style="imgStyle">
+      <img
+        :src="src"
+        :alt="button.icon.alt"
+        v-show="button.icon.src"
+        :style="imgStyle"
+      />
       <span>{{ button.text }}</span>
     </router-link>
     <div v-else :class="button.icon.class">
-      <img :src="src" :alt="button.icon.alt"  v-show="button.icon.src" :style="imgStyle">
+      <img
+        :src="src"
+        :alt="button.icon.alt"
+        v-show="button.icon.src"
+        :style="imgStyle"
+      />
       <span>{{ button.text }}</span>
     </div>
   </button>
 </template>
 
 <script>
-const requireIcon = require.context('@/assets/icons', false, /\.png$/);
+import { ref, computed } from "vue";
+const requireIcon = require.context("@/assets/icons", false, /\.png$/);
 const icons = {};
-import {ref,onMounted} from 'vue';
+
+requireIcon.keys().forEach((filename) => {
+  const iconName = filename.replace(/^\.\/(.*)\.\w+$/, "$1");
+  icons[iconName] = requireIcon(filename);
+});
 
 export default {
   props: {
-    baseStyle:Object,
+    baseStyle: Object,
     button: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
   setup(props) {
-    requireIcon.keys().forEach((filename) => {
-      const iconName = filename.replace(/^\.\/(.*)\.\w+$/, '$1');
-      icons[iconName] = requireIcon(filename);
+    const isHoveredBtn = ref(false);
+
+    const imgStyle = computed(() => {
+      return props.baseStyle.img.normal; 
     });
-    const btnStyle = ref(null);
-    const imgStyle = ref(null);
-    onMounted(() => {
-      if(props.baseStyle)
-      {
-        
-        if (props.baseStyle.btn) {
-          btnStyle.value = props.baseStyle.btn;
+
+    const btnStyle = computed(() => {
+      const style = { ...props.baseStyle.btn.normal };
+      if (isHoveredBtn.value) {
+        for (const key in props.baseStyle.btn.hover) {
+          style[key] = props.baseStyle.btn.hover[key];
         }
-        if (props.baseStyle.img) {
-          imgStyle.value = props.baseStyle.img;
-        }
-      } 
-        console.log(btnStyle.value,imgStyle.value)
-    })
-    
+      }
+      return style;
+    });
+
+    const src = computed(() => {
+      return icons[props.button.icon.src];
+    });
+
     return {
+      isHoveredBtn,
       imgStyle,
       btnStyle,
-      icons,
-      src: icons[props.button.icon.src]
+      src,
     };
-  }
+  },
 };
 </script>
-<style scoped>
-button {
-  
-  margin: 10px 0;
-  padding: 10px;
 
-  font-size: var(--font-size-btn);
-  background-color: var(--bg-btn);
-  
-  border: var(--border-btn);
-  transition: all 0.5s ease-in-out;
-  border-radius:var(--border-radius-btn);
-}
-img
+<style scoped>
+button:hover
 {
-  width: 2em;
-  height: 2em;
+  background-position: left;
 }
-a
-{
-  color:var(--color-btn);
-  width: 100%;
+.userNav:hover a {
+  color: var(--color-btn-mNav);
+}
+.userNav::before {
+  opacity: 0;
+  position: absolute;
+  z-index: 2;
+  content: "";
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  border: solid;
+  border-color: transparent transparent transparent var(--bg-btn-mNav);
+  transition: all 1s ease;
+  right: -15px;
+  border-width: 1em 0 1em 1em;
+}
+.userNav:hover::before {
+  animation: show 0.9s;
+  opacity: 1;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+    right: 150px;
+  }
+  100% {
+    opacity: 1;
+    right: -15px;
+  }
 }
 </style>
 

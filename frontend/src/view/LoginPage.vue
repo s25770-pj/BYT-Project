@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import loginProgress from '@/components/LoginProgress.vue';
+import loginProgress from '@/components/Login_Register/LoginProgress.vue';
 import { ref } from 'vue';
 
 export default {
@@ -76,11 +76,6 @@ export default {
 
 
 <style scoped>
-.logPage
-{
-    background-image: url('@/assets/images/backgrounds/background-home.svg');
-    background-size: cover;
-}
 .login-container {
   height: 100vh;
   display: flex;

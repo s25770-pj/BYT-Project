@@ -1,18 +1,53 @@
+:root {
+  --primary-color: #50c0bd;
+  --second-color: #c342d0;
+  --auxiliary-color-1: #8792da;
+  --auxiliary-color-2: #83f2ee;
+}
+:root {
+  --font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  --font-size-btn: 24px;
+  --color-btn: #2e2e2e;
+  --bg-btn: #50c0bd;
+  --border-btn: 5px solid #8bf9f5;
+  --border-radius-btn: 15px;
+  --mainPage: url("@/assets/images/backgrounds/background-home.svg");
+  --color: #0a0707;
+  --page-height: 100vh;
+  --bg-btn-mNav: var(--auxiliary-color-1);
+  --color-btn-mNav: #ececec;
+}
 :root{
-    --font-size-btn:24px;
-    --color-btn:#b4b4b4;
-    --bg-btn:#50c0bd;
-    --border-btn:5px solid #8bf9f5;
-    --border-radius-btn:15px;
+  --grid-cols: 3fr 1fr;
+  --grid-rows: 1fr 1fr 1fr;
+  --grid-template-areas:
+    "main chest "
+    "main chart "
+    "main progress";
 }
-:root.dark{
-    --font-size-btn:24px;
-    --color-btn:#ffffff;
-    --bg-btn:#50c0bd;
-    --border-btn:5px solid #8bf9f5;
-    --border-radius-btn:15px;
+:root.dark {
+  --font-size-btn: 24px;
+  --color-btn: #e6e6e6;
+  --bg-btn: #50c0bd;
+  --border-btn: 5px solid #8bf9f5;
+  --border-radius-btn: 15px;
+  --mainPage: url("@/assets/images/backgrounds/background-panel.png");
+  --color: var(--color-btn);
 }
-a
-{
-    text-decoration: none;
+* {
+  font-family: var(--font-family);
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: var(--color-btn);
+  width: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color);
 }

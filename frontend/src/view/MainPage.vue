@@ -12,7 +12,7 @@
 
   
   <script>
-  import MainNav from '@/components/MainNav.vue';
+  import MainNav from '@/components/CreateNav/MainNav.vue';
 
   export default {
     name: 'HomePage',
@@ -23,24 +23,10 @@
     {
       return {
         baseStyle:{
-          btn:{
-            margin: '10px 0',
-            padding: '20px',
-            width: '100%'
-          },
-          img:{
-            position:'relative',
-            left:'-2em'
-          }
+          btn:{margin: '10px 0',padding: '20px',width: '100%'},
+          img:{position:'relative',left:'-2em'}
         }
       }
     }
   }
   </script>
-
-<style scoped>
-.home {
-  background-image: url('@/assets/images/backgrounds/background-home.svg');
-  background-size: cover;
-}
-</style>

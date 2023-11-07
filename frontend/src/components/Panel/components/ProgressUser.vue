@@ -25,7 +25,7 @@
 import {fetchDataFromEndpoint} from '@/function/fetchData.js';
 import {convertNumber} from '@/function/convertNumber.js';
 import {ref, onMounted} from 'vue';
-import GenericLoading from '@/components/GenericLoading.vue';
+import GenericLoading from '@/components/Helpful/GenericLoading.vue';
 import SettingPage from '@/components/Panel/components/SettingPage.vue';
 export default {
   components: { GenericLoading,SettingPage },

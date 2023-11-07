@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import PersonBox from "@/components/PersonBox.vue";
+import PersonBox from "@/components/Helpful/PersonBox.vue";
 import TeamData from '@/data/team.json';
 import { ref } from 'vue';
 
@@ -38,13 +38,6 @@ export default {
 </script>
 
 <style scoped>
-.aboutUs {
-  min-height: 100vh;
-  background-image: url('@/assets/images/backgrounds/background-home.svg');
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 .person-list {
   width: 70%;
 }
