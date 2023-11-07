@@ -1,19 +1,17 @@
 <template>
   <div class="chart-container progressUser h-100">
-        <ProgressBar />
-    </div>
+    <ProgressBar />
+  </div>
 </template>
 
 <script>
-import ProgressBar from '@/modules/progressBar/ProgressBar.vue';
+import ProgressBar from "@/modules/progressBargit /ProgressBar.vue";
 
 export default {
-    components: {
-        ProgressBar
-    }
-}
+  components: {
+    ProgressBar,
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

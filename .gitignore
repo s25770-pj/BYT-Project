@@ -23,6 +23,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0ce1d7588096a27200587e98069f690855d962a
 .DS_Store
 node_modules
 /dist
