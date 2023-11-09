@@ -15,6 +15,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '_static')
 STATIC_URL = '/static/'
 CONFIG_ALLOWED_HOSTS = [
     '127.0.0.1',
+    '57.128.197.32',
+    '.edupjatk.online'
     'localhost',
 ]
 MAX_UPLOAD_SIZE = 104785760
