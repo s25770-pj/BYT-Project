@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ProgressBar from "@/modules/progressBargit /ProgressBar.vue";
+import ProgressBar from "@/modules/progressBar/ProgressBar.vue";
 
 export default {
   components: {

@@ -8,4 +8,7 @@
       "progress"
       "main";
   }
+  :root {
+    --btn-width: 95%;
+  }
 }

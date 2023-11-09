@@ -3,19 +3,21 @@
   --second-color: #c342d0;
   --auxiliary-color-1: #8792da;
   --auxiliary-color-2: #83f2ee;
+  --primary-color-black: #919191;
 }
 :root {
   --font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   --font-size-btn: 24px;
   --color-btn: #2e2e2e;
   --bg-btn: #50c0bd;
-  --border-btn: 5px solid #8bf9f5;
+  --border-btn: 5px solid var(--primary-color-black);
   --border-radius-btn: 15px;
   --mainPage: url("@/assets/images/backgrounds/background-home.svg");
   --color: #0a0707;
   --page-height: 100vh;
   --bg-btn-mNav: var(--auxiliary-color-1);
   --color-btn-mNav: #ececec;
+  --btn-width:100%;
 }
 :root{
   --grid-cols: 3fr 1fr;
@@ -24,6 +26,12 @@
     "main chest "
     "main chart "
     "main progress";
+}
+:root{
+  --progress-border-color: rgb(88, 88, 88);
+  --active: rgb(68, 230, 68);
+  --inactive: rgb(186, 245, 180);
+  --default: rgb(214, 214, 214);
 }
 :root.dark {
   --font-size-btn: 24px;

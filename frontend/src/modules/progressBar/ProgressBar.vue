@@ -27,7 +27,7 @@
 <script>
 import { ref } from "vue";
 import { fetchDataFromEndpoint } from "@/function/fetchData.js";
-import CustomButton from "@/components/CreateNav/CustomButton.vue";
+import CustomButton from "@/components/CustomButton.vue";
 import GenericLoadingVue from "@/components/Helpful/GenericLoading.vue";
 export default {
   components: {
@@ -74,14 +74,6 @@ export default {
 };
 </script>
 
-<style>
-:root {
-  --progress-border-color: rgb(88, 88, 88);
-  --active: rgb(68, 230, 68);
-  --inactive: rgb(186, 245, 180);
-  --default: rgb(214, 214, 214);
-}
-</style>
 <style scoped>
 .loader {
   text-align: center;
@@ -97,8 +89,9 @@ h2 {
   display: flex;
   justify-content: center;
   height: 100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
+  flex-direction: column;
 }
 .progressBar {
   display: flex;
@@ -114,6 +107,7 @@ h2 {
   height: 30px;
   background-color: var(--default);
 }
+
 .first-slot {
   border-left: 2px solid var(--progress-border-color);
   border-top-left-radius: 50%;

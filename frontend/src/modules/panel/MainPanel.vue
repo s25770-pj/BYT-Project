@@ -1,8 +1,18 @@
 <template>
-  <div class="contener glass-effect">
+  <div class="contener glass-effect" :style="PanelStyle">
     <router-view></router-view>
   </div>
 </template>
+<script>
+
+export default ({
+  props:{
+    PanelStyle:{
+      type:Object
+    }
+  }
+})
+</script>
 
 
 <style scoped>
@@ -11,11 +21,10 @@
   right: 3%;
   top: 10%;
   min-width: 80vw;
+  max-width: 80vw;
   min-height: 80vh;
 }
 .glass-effect {
-  width: 300px;
-  height: 300px;
   padding: 20px;
   border-radius: 10px;
   background: linear-gradient(
@@ -30,7 +39,7 @@
 .leout-3x3 {
   display: grid;
   gap: 10px 10px;
-
+  min-height: 75vh;
   grid-template-rows: var(--grid-rows);
   grid-template-columns: var(--grid-cols);
   grid-template-areas: var(--grid-template-areas);

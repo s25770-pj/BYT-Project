@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CustomButton from '@/components/CreateNav/CustomButton.vue';
+import CustomButton from '@/components/CustomButton.vue';
 export default {
   name:'NavList',
     components:{

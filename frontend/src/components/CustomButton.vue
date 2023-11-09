@@ -47,7 +47,6 @@ export default {
   },
   setup(props) {
     const isHoveredBtn = ref(false);
-
     const imgStyle = computed(() => {
       return props.baseStyle.img.normal; 
     });

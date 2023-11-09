@@ -1,7 +1,7 @@
 <template>
   <div class="settings-menu" @mouseover="showMenu = true" @mouseleave="showMenu = false">
     <div class="menu-toggle" @click="$toggleDarkMode">
-      <i class="bi bi-gear-fill"></i>
+      <img src="@/assets/icons/settings.svg" alt="settings">
     </div>
     <div class="menu" v-if="showMenu">
       <ul>
@@ -44,18 +44,11 @@ export default {
 </script>
 
 <style scoped>
-.settings-menu {
-  position: relative;
-  z-index: 9999;
-}
 
 .menu-toggle {
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
-  position: absolute; 
-  top: 10px;
-  right: 10px; 
 }
 
 .menu {
@@ -70,10 +63,8 @@ export default {
   z-index: 9999;
 }
 
-i {
-  height: 1em;
-  width: 1em;
-  background-color: blue;
+img{
+  height: 1.5em;
 }
 
 .menu ul {

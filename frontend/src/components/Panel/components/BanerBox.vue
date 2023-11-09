@@ -1,12 +1,10 @@
 <template>
-  <div class="baner">
+  <div class="baner" :style="style">
             <router-link to="/panel" class="d-flex flex-row justify-content-center align-items-center">
+                
                 <div class="logo">
                     <img src="@/assets/icons/logo.png">
-                </div>
-                <div>
-                    <span name="PageName">{{PageName}}</span>
-                    <div name="type">Tryb:<span>dziecka</span></div>
+                    <div name="type" v-if="showMode">Tryb: <span>dziecka</span></div>
                 </div>
                 
             </router-link>
@@ -16,8 +14,12 @@
 <script>
 export default {
     name: "BanerBox",
-    setup(){
-        return {PageName: process.env.VUE_APP_SITE_TITLE || ''}
+    props:{
+        style:{type:Object},
+        showMode:{
+            type:Boolean,
+            default: ()=>true
+        }
     }
 }
 </script>
@@ -29,18 +31,26 @@ export default {
     position: absolute;
     top:5%;
 }
+.logo{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 img
 {
-    width: 4em;
-    height: 4em;
+    height: 100%;
+    width: 90%;
 }
 span
 {
     color:var(--primary-color);
 }
-span[name="PageName"]
+div[name="type"]
 {
-    font-size: 2em;
+    font-size: 1em;
     font-weight: 700;
+    text-align: center;
 }
 </style>

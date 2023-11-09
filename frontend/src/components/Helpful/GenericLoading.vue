@@ -26,9 +26,6 @@ export default {
   },
   props: {
     isLoading: Boolean
-  },
-  setup(props) {
-    console.log(props.isLoading);
   }
 };
 </script>

@@ -1,15 +1,14 @@
 <template>
   <div class="navbar">
-    
-    <div class="menu d-flex flex-row justify-content-center align-items-center align-content-center flex-wrap">
-        <BanerBox />
-        <MainNav lang="pl" nav="user" :baseStyle="baseStyle" />
+      <div class="menu d-flex flex-row justify-content-center align-items-center align-content-center flex-wrap">
+          <BanerBox />
+          <MainNav lang="pl" nav="user" :baseStyle="baseStyle" />
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
-import MainNav from '@/components/CreateNav/MainNav.vue';
+import MainNav from './MainNav.vue';
 import BanerBox from '@/components/Panel/components/BanerBox.vue';
 
 export default {
@@ -29,8 +28,8 @@ export default {
               padding: '10px',
               borderRadius:'var(--border-radius-btn)',
               transition: 'all .5s ease-in-out',
-              background: 'linear-gradient(to right, transparent 50%, var(--bg-btn-mNav) 50%) 200% 100%',
-              backgroundPosition: 'right'
+              background: 'linear-gradient(to right, transparent 0%, var(--bg-btn-mNav) 50%) 200% 100%',
+              backgroundPosition: 'right',
             },
             hover:{
               backgroundPosition: 'left',

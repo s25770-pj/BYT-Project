@@ -1,6 +1,6 @@
 <template>
 
-  <div class="leout-3x3 h-100">
+  <div class="leout-3x3">
 
     <main-panel class="main"/>
     <Highcharts-chart-box class="chart"/>

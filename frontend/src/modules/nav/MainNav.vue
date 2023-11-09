@@ -7,7 +7,7 @@
   
   <script>
   import {ref} from 'vue'
-  import NavList from '@/components/CreateNav/NavList.vue'
+  import NavList from './NavList.vue'
   import menuData from "@/data/nav.json";
 
   export default {
@@ -32,13 +32,4 @@
   }
   }
   </script>
-
-<style scoped>
-div
-{
-  width: 90%;
-  position: relative;
-  left:-2%;
-}
-</style>
   
