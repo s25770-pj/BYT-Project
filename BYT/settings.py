@@ -17,8 +17,14 @@ else:
     else:
         ALLOWED_HOSTS = [
             'localhost',
+	    '57.128.197.32',
+	    'learn.edupjatk.online',
             '127.0.0.1',
         ]
+
+CSRF_TRUSTED_ORIGINS = [
+	'http://learn.edupjatk.online',
+]
 
 try:
     MEDIA_ROOT
@@ -47,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sslserver',
 ]
 
 if INSTALLED_EXTRA_APPS:
@@ -113,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
 
