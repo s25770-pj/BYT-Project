@@ -23,6 +23,16 @@
                 },
                 "text": "Rozpocznij",
                 "class": []
+            },{
+                "to": "/register",
+                "icon": 
+                {
+                "src":"start",
+                "alt":"Rozpocznij",
+                "class":["d-flex","align-items-center","justify-content-center"]
+                },
+                "text": "Zarejestruj się",
+                "class": []
             }]
         },
         "user":{
@@ -33,10 +43,10 @@
                 {
                 "src":"profil",
                 "alt":"profil_picture",
-                "class":["icon","justify-content-start"]
+                "class":["d-flex","justify-content-around","align-items-center"]
                 },
                 "text": "profil",
-                "class": ["user-btn","d-flex","align-items-center","m-2"]
+                "class": ["d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/panel/learning",
@@ -44,10 +54,10 @@
                 {
                 "src":"learning",
                 "alt":"profil_picture",
-                "class":["icon","justify-content-start"]
+                "class":["d-flex","justify-content-around","align-items-center"]
                 },
                 "text": "nauka",
-                "class": ["user-btn","d-flex","align-items-center","m-2"]
+                "class": ["d-flex","align-items-center","m-2"]
             },
             {
                 "to": "/",
@@ -55,32 +65,21 @@
                 {
                 "src":"exercising",
                 "alt":"profil_picture",
-                "class":["icon","justify-content-start"]
+                "class":["icon","d-flex","justify-content-around","align-items-center"]
                 },
                 "text": "ćwiczenia",
-                "class": ["user-btn","d-flex","align-items-center","m-2"]
+                "class": ["d-flex","align-items-center","m-2"]
             },
             {
-                "to": "/",
+                "to": "/panel/equipment",
                 "icon": 
                 {
                 "src":"bag",
                 "alt":"profil_picture",
-                "class":["icon","justify-content-start"]
+                "class":["d-flex","justify-content-around","align-items-center"]
                 },
                 "text": "ekwipunek",
-                "class": ["user-btn","d-flex","align-items-center","m-2"]
-            },
-            {
-                "to": "/",
-                "icon": 
-                {
-                "src":"logOut",
-                "alt":"profil_picture",
-                "class":["icon","justify-content-start"]
-                },
-                "text": "wyloguj",
-                "class": ["user-btn","d-flex","align-items-center","m-2"]
+                "class": ["d-flex","align-items-center","m-2"]
             }]
         },
         "footer":{

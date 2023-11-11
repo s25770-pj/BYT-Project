@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import SmallLoader from "@/components/SmallLoader.vue";
+import SmallLoader from "./SmallLoader.vue";
 
 export default {
   components: {
@@ -26,9 +26,6 @@ export default {
   },
   props: {
     isLoading: Boolean
-  },
-  setup(props) {
-    console.log(props.isLoading);
   }
 };
 </script>

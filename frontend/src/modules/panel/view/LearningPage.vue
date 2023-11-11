@@ -15,7 +15,7 @@ export default {
       const modules = ref(['Math_01', 'Math_02']); 
       const randomModule = modules.value[Math.floor(Math.random() * modules.value.length)];
       try {
-        const module = await import(`@/components/modul/math/${randomModule}.vue`);
+        const module = await import(`@/modules/educationModules/${randomModule}.vue`);
         selectedComponent.value = module.default;
       } catch (error) {
         console.error('Błąd ładowania modułu:', error);

@@ -2,9 +2,14 @@
   <div class="person-box card mb-3">
     <div class="row no-gutters">
       <div class="col-md-6 col-sm-12">
-        <img v-if="person.photo" :src="images[person.photo]" :alt="person.name" class="card-img">
+        <img
+          v-if="person.photo"
+          :src="images[person.photo]"
+          :alt="person.name"
+          class="card-img"
+        />
       </div>
-      <div class="col-sm-12" :class="{'col-md-6': person.photo}">
+      <div class="col-sm-12" :class="{ 'col-md-6': person.photo }">
         <div class="card-body">
           <h2 class="card-title">{{ person.name }} {{ person.surname }}</h2>
           <div v-if="person.photo" class="card-text">{{ person.role }}</div>
@@ -16,21 +21,27 @@
               <template v-if="key === 'link'">
                 <ul class="link-list">
                   <li v-for="(link, linkKey) in value" :key="linkKey">
-                    <p>{{ linkKey }}:<a :href="link" target="_blank"> {{ link }}</a></p>
+                    <p>
+                      {{ linkKey }}:<a :href="link.href" target="_blank">
+                        {{ link.text }}</a
+                      >
+                    </p>
                   </li>
                 </ul>
               </template>
               <template v-else-if="key === 'list'">
                 <p>{{ key }}:</p>
                 <ul class="custom-list">
-                  <li v-for="(item, itemKey) in value" :key="itemKey">{{ itemKey }}: {{ item }}</li>
+                  <li v-for="(item, itemKey) in value" :key="itemKey">
+                    {{ itemKey }}: {{ item }}
+                  </li>
                 </ul>
               </template>
               <template v-else-if="typeof value === 'string'">
                 <p>{{ key }}: {{ value }}</p>
               </template>
               <template v-else-if="Array.isArray(value)">
-                <p>{{ key }}: {{ value.join(', ') }}</p>
+                <p>{{ key }}: {{ value.join(", ") }}</p>
               </template>
             </div>
           </div>
@@ -41,7 +52,7 @@
 </template>
 
 <script>
-const requireImage = require.context('@/assets/images/teams', false, /\.png$/);
+const requireImage = require.context("@/assets/images/teams", false, /\.png$/);
 const images = {};
 
 export default {
@@ -50,10 +61,10 @@ export default {
   },
   setup() {
     requireImage.keys().forEach((fileImage) => {
-      const iconName = fileImage.replace(/^\.\/(.*)\.\w+$/, '$1');
+      const iconName = fileImage.replace(/^\.\/(.*)\.\w+$/, "$1");
       images[iconName] = requireImage(fileImage);
     });
-    
+
     return { images };
   },
 };
@@ -68,8 +79,7 @@ export default {
   min-width: 16%;
   aspect-ratio: 16/9;
 }
-.card-title
-{
+.card-title {
   font-size: 1.1em;
 }
 .card-img {
@@ -117,7 +127,7 @@ export default {
     max-width: 100%;
     margin-right: 0;
   }
-  
+
   .person-list {
     display: flex;
     flex-wrap: wrap;

@@ -7,7 +7,7 @@
   
   <script>
   import {ref} from 'vue'
-  import NavList from '@/components/NavList.vue'
+  import NavList from './NavList.vue'
   import menuData from "@/data/nav.json";
 
   export default {
@@ -32,17 +32,4 @@
   }
   }
   </script>
-
-<style scoped>
-.home {
-  background-image: url('@/assets/images/backgrounds/background-home.svg');
-  background-size: cover;
-}
-.button-container {
-  padding: 20px;
-  border-radius: 5px;
-  text-align: center;
-  width: 100%;
-}
-</style>
   
