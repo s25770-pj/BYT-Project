@@ -1,24 +1,24 @@
 <template>
   <div>
-    <ProgressUser :style="isMinSize ? progressStyle : '' " />
+    <ProgressUser :style="isMinSize ? progressStyle : '' " :size="isMinSize" />
     <UserNav lang="pl" nav="user" v-if="!isMinSize" />
-    <PanelModul :style="isMinSize ? PanelStyle : '' "/>
-    <!--MainFooter/-->
+    <PanelModul :style="isMinSize ? PanelStyle : '' "  />
+    <MainFooter v-if="!isMinSize"/>
   </div>
 </template>
 
 <script>
 import PanelModul from "@/modules/panel/MainPanel.vue";
 
-//import MainFooter from '@/components/Helpful/Footer/MainFooter.vue';
+import MainFooter from '@/modules/footer/MainFooter.vue';
 import UserNav from "@/modules/nav/UserNav.vue";
-import ProgressUser from "@/components/Panel/components/ProgressUser.vue";
+import ProgressUser from "@/modules/progressUser/ProgressUser.vue";
 import { ref } from "vue";
 export default {
   name: "UserPanel",
   components: {
     PanelModul,
-    //MainFooter,
+    MainFooter,
     UserNav,
     ProgressUser,
   },
@@ -33,7 +33,7 @@ export default {
       progressStyle: {
         position:"fixed",
         top: "0",
-        left:"0",
+        right: '0',
         minHeight:"10%",
         width:"100vw",
         display: "flex",
@@ -42,7 +42,8 @@ export default {
       PanelStyle:{
         minWidth: "95vw",
         top: "15vh",
-        rigth: "5%"
+        rigth: "5%",
+        marginBotttom:"10%"
       }
     };
   },

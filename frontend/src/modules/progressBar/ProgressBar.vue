@@ -28,7 +28,7 @@
 import { ref } from "vue";
 import { fetchDataFromEndpoint } from "@/function/fetchData.js";
 import CustomButton from "@/components/CustomButton.vue";
-import GenericLoadingVue from "@/components/Helpful/GenericLoading.vue";
+import GenericLoadingVue from "@/modules/loader/GenericLoading.vue";
 export default {
   components: {
     CustomButton,

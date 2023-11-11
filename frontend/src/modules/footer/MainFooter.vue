@@ -1,18 +1,12 @@
 <template>
   <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 text-md-end">
-          <p>&copy; {{ currentYear }} {{ pageTitle }}</p>
-          <MainNav lang="pl" nav="footer" :baseStyle="baseStyle" />
-        </div>
-      </div>
-    </div>
+    <p>&copy; {{ currentYear }} {{ pageTitle }}</p>
+    <MainNav lang="pl" nav="footer" :baseStyle="baseStyle" />
   </footer>
 </template>
 
 <script>
-import MainNav from "@/components/CreateNav/MainNav.vue";
+import MainNav from "@/modules/nav/MainNav.vue";
 export default {
   name: "MainFooter",
   components: {
@@ -56,15 +50,9 @@ export default {
   border: none;
   min-height: 5vh;
   width: 50%;
+  display: flex;
 }
 p {
   width: 50%;
-}
-.row div {
-  height: 100%;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>

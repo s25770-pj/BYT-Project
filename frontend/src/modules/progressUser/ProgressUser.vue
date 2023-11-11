@@ -18,7 +18,8 @@
         <div class="static-value">{{ strick }}</div>
       </div>
     </GenericLoading>
-    <div class="static-item">
+    <div class="static-item d-flex justify-content-between">
+      <MoreInfo :size="size"/>
       <SettingPage />
     </div>
   </div>
@@ -27,13 +28,19 @@
 import { fetchDataFromEndpoint } from "@/function/fetchData.js";
 import { convertNumber } from "@/function/convertNumber.js";
 import { ref, onMounted } from "vue";
-import GenericLoading from "@/components/Helpful/GenericLoading.vue";
+import GenericLoading from "@/modules/loader/GenericLoading.vue";
 import SettingPage from "@/components/Panel/components/SettingPage.vue";
+
+import MoreInfo from "./MoreInfo.vue";
+
 export default {
-  components: { GenericLoading, SettingPage },
+  components: { GenericLoading, SettingPage, MoreInfo },
   props:{
     style:{
       type:Object
+    },
+    size:{
+      type:Boolean
     }
   },
   setup() {
@@ -64,6 +71,7 @@ export default {
 <style scoped>
 .static-bar {
   position: absolute;
+  z-index: 10;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -80,7 +88,7 @@ export default {
   display: flex;
   align-items: center;
   margin-right: 10px;
-  min-width: 5%;
+  min-width: 10%;
   height: 100%;
   justify-content:center;
 }

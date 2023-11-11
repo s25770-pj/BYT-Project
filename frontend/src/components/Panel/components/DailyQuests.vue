@@ -29,7 +29,7 @@
 <script>
 import { ref,onMounted } from 'vue';
 import { fetchDataFromEndpoint } from '@/function/fetchData.js';
-import GenericLoading from '@/components/Helpful/GenericLoading.vue';
+import GenericLoading from '@/modules/loader/GenericLoading.vue';
 
 const requireIcon = require.context('@/assets/icons', false, /\.png$/);
 const icons = {};

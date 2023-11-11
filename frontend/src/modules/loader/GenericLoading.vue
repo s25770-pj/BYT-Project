@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import SmallLoader from "@/components/Helpful/Loader/SmallLoader.vue";
+import SmallLoader from "./SmallLoader.vue";
 
 export default {
   components: {

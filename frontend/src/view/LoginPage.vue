@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import loginProgress from '@/components/Login_Register/LoginProgress.vue';
+import loginProgress from '@/modules/login/LoginProgress.vue';
 import { ref } from 'vue';
 
 export default {
