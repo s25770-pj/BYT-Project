@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import 'normalize.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import '@/config/variables.css';
 import '@/config/media.css';

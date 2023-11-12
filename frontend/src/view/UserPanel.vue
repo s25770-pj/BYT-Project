@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProgressUser :style="isMinSize ? progressStyle : '' " :size="isMinSize" />
+    <ProgressUser :style="isMinSize ? progressStyle : null " :size="isMinSize" />
     <UserNav lang="pl" nav="user" v-if="!isMinSize" />
     <PanelModul :style="isMinSize ? PanelStyle : '' "  />
     <MainFooter v-if="!isMinSize"/>

@@ -18,9 +18,9 @@
         <div class="static-value">{{ strick }}</div>
       </div>
     </GenericLoading>
-    <div class="static-item d-flex justify-content-between">
-      <MoreInfo :size="size"/>
-      <SettingPage />
+    <div class="static-item d-flex justify-content-around">
+      <MoreInfo v-if="size"/>
+      <SettingPage/>
     </div>
   </div>
 </template>
@@ -88,7 +88,7 @@ export default {
   display: flex;
   align-items: center;
   margin-right: 10px;
-  min-width: 10%;
+  min-width: 15%;
   height: 100%;
   justify-content:center;
 }

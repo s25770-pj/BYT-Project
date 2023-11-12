@@ -64,7 +64,7 @@ export default {
 }
 
 img{
-  height: 1.5em;
+  height: 2em;
 }
 
 .menu ul {

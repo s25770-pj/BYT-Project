@@ -1,7 +1,7 @@
 <template>
-    <div>
-     <NavList :buttons="buttons" :baseStyle="baseStyle"/>
-    </div>
+  <div>
+    <NavList :buttons="buttons" :baseStyle="baseStyle" :class="classNav"/>
+  </div>
 </template>
 
   
@@ -24,6 +24,9 @@
         nav:{
             type:String,
             required:true
+        },
+        classNav:{
+          type:Array
         }
     },
     setup(props){
