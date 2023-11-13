@@ -20,7 +20,6 @@ export default {
   },
   setup(props,{ emit }){
     watch(props.loading,emit('login-success', 'Zalogowano pomyślnie!'))
-    console.log(props.loading)
   }
 };
 </script>

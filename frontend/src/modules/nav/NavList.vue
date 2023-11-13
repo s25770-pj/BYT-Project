@@ -5,6 +5,8 @@
       :key="index"
       :button ="button"
       :baseStyle="baseStyle"
+      :imgShow="imgShow"
+      :textShow="textShow"
     /> 
   </div>
 </template>
@@ -22,7 +24,15 @@ export default {
         type: Array,
         required:true,
         default:()=>[]
+    },
+    imgShow:{
+      type:Boolean,
+      default: ()=>{true}
+    },
+    textShow:{
+      type:Boolean,
+      default: ()=>{true}
     }
-  },
+  }
 };
 </script>

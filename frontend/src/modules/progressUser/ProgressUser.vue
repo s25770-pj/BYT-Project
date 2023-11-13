@@ -29,7 +29,7 @@ import { fetchDataFromEndpoint } from "@/function/fetchData.js";
 import { convertNumber } from "@/function/convertNumber.js";
 import { ref, onMounted } from "vue";
 import GenericLoading from "@/modules/loader/GenericLoading.vue";
-import SettingPage from "@/components/Panel/components/SettingPage.vue";
+import SettingPage from "./SettingPage.vue";
 
 import MoreInfo from "./MoreInfo.vue";
 

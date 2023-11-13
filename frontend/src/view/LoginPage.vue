@@ -53,13 +53,13 @@ export default {
 
     function login() {
       loading.value = true;
-      console.log('Logowanie...');
+      //console.log('Logowanie...');
       
       
       setTimeout(() => {
         loading.value = false; 
         message.value = 'Zalogowano pomyślnie!'; 
-        console.log('Zalogowano pomyślnie!');
+        //console.log('Zalogowano pomyślnie!');
       }, 2000);
     }
 

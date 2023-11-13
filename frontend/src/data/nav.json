@@ -115,6 +115,21 @@
                 "text": "kontakt",
                 "class": ["footer-link"]
             }]
+        },
+        "settings":{
+            "buttons":[
+                {
+                    "to": null,
+                    "icon": 
+                    {
+                    "src":null,
+                    "alt":"icon",
+                    "class":["icon","icon_min"]
+                    },
+                    "text": "zmień motyw",
+                    "class": ["footer-link"]
+                }
+            ]
         }
     },
     "en":{

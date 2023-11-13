@@ -10,19 +10,19 @@
       <img
         :src="src"
         :alt="button.icon.alt"
-        v-show="button.icon.src"
+        v-if="button.icon.src && imgShow"
         :style="imgStyle"
       />
-      <span>{{ button.text }}</span>
+      <span v-if="textShow">{{ button.text }}</span>
     </router-link>
     <div v-else :class="button.icon.class">
-      <img
+      <img 
         :src="src"
         :alt="button.icon.alt"
-        v-show="button.icon.src"
+        v-if="button.icon.src && imgShow"
         :style="imgStyle"
       />
-      <span>{{ button.text }}</span>
+      <span v-if="textShow">{{ button.text }}</span>
     </div>
   </button>
 </template>
@@ -44,13 +44,20 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    imgShow:{
+      type:Boolean,
+      default: true
+    },
+    textShow:{
+      type:Boolean,
+      default: true
+    }
   },
   setup(props) {
     const isHoveredBtn = ref(false);
     const imgStyle = computed(() => {
       return props.baseStyle.img.normal; 
     });
-
     const btnStyle = computed(() => {
       const style = { ...props.baseStyle.btn.normal };
       if (isHoveredBtn.value) {

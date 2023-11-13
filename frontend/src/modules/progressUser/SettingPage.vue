@@ -1,19 +1,18 @@
 <template>
-  <img src="@/assets/iconsUserStatistics/info.svg" alt="info" class="static-icon"  @click="toggleModule" />
+  <img src="@/assets/iconsUserStatistics/settings.svg" alt="info" class="static-icon"  @click="toggleModule" />
   
   <teleport to="body">
       <div class="modal-overlay" v-if="showModule" @click="toggleModule">
         <div class="modal-container">
-          <div title="Menu" size="xl">
-            <!-- Treść modala -->
+          <div title="Menu"  size="xl">
             <div class="modal-dialog modal-fullscreen-sm-down">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Informacje dodatkowe:</h5>
+                  <h5 class="modal-title">Ustawienia:</h5>
                 </div>
                 <div class="modal-body">
                   <div class="module-menu">
-                    <MainNav lang="pl" nav="footer" :baseStyle="baseStyle" :classNav=classNav />
+                    <MainNav lang="pl" nav="settings" :baseStyle="baseStyle" :classNav=classNav />
                   </div>
                 </div>
               </div>
@@ -69,6 +68,10 @@ export default {
 </script>
 
 <style scoped>
+
+img{
+  height: 2em;
+}
 .static-icon {
   width: 2em;
   height: 2em;

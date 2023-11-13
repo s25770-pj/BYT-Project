@@ -71,7 +71,7 @@ export default {
       if (currentStep.value < steps.length) {
         currentStep.value++;
       } else {
-        console.log("Rejestracja zakończona");
+        //console.log("Rejestracja zakończona");
       }
     };
 
