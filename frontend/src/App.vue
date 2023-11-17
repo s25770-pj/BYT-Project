@@ -12,8 +12,6 @@ export default {
 <style scoped>
 .app
 {
-  background-image: var(--mainPage);
-  background-size: cover;
   height:var(--page-height);
   overflow: auto;
 }

@@ -1,26 +1,44 @@
 <template>
   <div class="static-bar" :style="style">
-    <GenericLoading :isLoading="isLoading">
-      <div class="static-item">
-        <img src="@/assets/iconsUserStatistics/gold.png" alt="Gold" class="static-icon" />
-        <div class="static-value">{{ gold }}</div>
-      </div>
-    </GenericLoading>
-    <GenericLoading :isLoading="isLoading">
-      <div class="static-item">
-        <img src="@/assets/iconsUserStatistics/gem.png" alt="Gem" class="static-icon" />
-        <div class="static-value">{{ gem }}</div>
-      </div>
-    </GenericLoading>
-    <GenericLoading :isLoading="isLoading">
-      <div class="static-item">
-        <img src="@/assets/iconsUserStatistics/strick.png" alt="Stricks" class="static-icon" />
-        <div class="static-value">{{ strick }}</div>
-      </div>
-    </GenericLoading>
-    <div class="static-item d-flex justify-content-around">
-      <MoreInfo v-if="size"/>
-      <SettingPage/>
+    <div class="static-item">
+      <img
+        src="@/assets/iconsUserStatistics/gold.png"
+        alt="Gold"
+        class="static-icon"
+      />
+      <GenericLoading :isLoading="isLoading" class="static-value gold">
+        <div>{{gold}}</div>
+      </GenericLoading>
+    </div>
+
+    <div class="static-item">
+      <img
+        src="@/assets/iconsUserStatistics/gem.png"
+        alt="Gem"
+        class="static-icon"
+      />
+      <GenericLoading :isLoading="isLoading" class="static-value gem">
+        <div>{{gem}}</div>
+      </GenericLoading>
+    </div>
+
+    <div class="static-item">
+      <img
+        src="@/assets/iconsUserStatistics/strick.png"
+        alt="Strick"
+        class="static-icon"
+      />
+      <GenericLoading :isLoading="isLoading" class="static-value strick">
+        <div>{{strick}}</div>
+      </GenericLoading>
+    </div>
+
+    <div
+      :isLoading="isLoading"
+      class="static-item d-flex justify-content-around"
+    >
+      <MoreInfo />
+      <SettingPage />
     </div>
   </div>
 </template>
@@ -30,18 +48,25 @@ import { convertNumber } from "@/function/convertNumber.js";
 import { ref, onMounted } from "vue";
 import GenericLoading from "@/modules/loader/GenericLoading.vue";
 import SettingPage from "./SettingPage.vue";
+//import anime from 'animejs/lib/anime.js';
 
 import MoreInfo from "./MoreInfo.vue";
 
+/*const animateValue = (targetSelector, value) => {
+  anime({
+    targets: targetSelector,
+    innerHTML: [0, value],
+    duration: 1000,
+    easing: "linear",
+    round: 1
+  });
+};*/
 export default {
   components: { GenericLoading, SettingPage, MoreInfo },
-  props:{
-    style:{
-      type:Object
+  props: {
+    style: {
+      type: Object,
     },
-    size:{
-      type:Boolean
-    }
   },
   setup() {
     const isLoading = ref(true);
@@ -56,19 +81,29 @@ export default {
           gem.value = convertNumber(response.gem);
           strick.value = convertNumber(response.strick);
         })
+        .then(() => {  
+          /*animateValue(".gold", gold.value);
+          animateValue(".gem", gem.value);
+          animateValue(".strick", strick.value);*/
+        })
         .catch((error) => {
           console.error("Błąd podczas pobierania danych:", error);
+          isLoading.value = false;
         })
         .finally(() => {
           isLoading.value = false;
         })
     );
+
     return { gold, gem, strick, isLoading };
   },
 };
 </script>
 
 <style scoped>
+* {
+  text-align: center;
+}
 .static-bar {
   position: absolute;
   z-index: 10;
@@ -81,16 +116,16 @@ export default {
   right: 5%;
   top: 2%;
   height: 5vh;
-  min-width: 15vw;
+  min-width: 30vw;
 }
 
 .static-item {
   display: flex;
   align-items: center;
   margin-right: 10px;
-  min-width: 15%;
+  width: 25%;
   height: 100%;
-  justify-content:center;
+  justify-content: center;
 }
 
 .static-icon {

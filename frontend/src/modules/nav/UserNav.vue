@@ -2,7 +2,7 @@
   <div class="navbar">
       <div class="menu d-flex flex-row justify-content-center align-items-center align-content-center flex-wrap">
           <BanerBox />
-          <MainNav lang="pl" nav="user" :baseStyle="baseStyle" />
+          <MainNav lang="pl" nav="user" :baseStyle="baseStyle" class="navbar" :textShow="textShow" :containerMenu="containerMenu"/>
       </div>
     </div>
 </template>
@@ -16,6 +16,11 @@ export default {
     BanerBox,
     MainNav
   },
+  props:{
+    textShow:{
+      type:Boolean
+    }
+  },
   setup(){
     return {
         baseStyle:{
@@ -28,7 +33,7 @@ export default {
               padding: '10px',
               borderRadius:'var(--border-radius-btn)',
               transition: 'all .5s ease-in-out',
-              background: 'linear-gradient(to right, transparent 0%, var(--bg-btn-mNav) 50%) 200% 100%',
+              background: 'var(--bg-btn-mNav)',
               backgroundPosition: 'right',
             },
             hover:{
@@ -41,6 +46,10 @@ export default {
               height: '2em'
             }
           }
+        },
+        containerMenu:{
+          minWidth:"50%",
+          maxWidth:"90%"
         }
       }
   }
@@ -54,6 +63,7 @@ export default {
 }
 
 .menu {
+
   background: linear-gradient(to bottom, rgb(241 235 235 / 58%), rgb(241 235 235 / 49%));
   width: 15%;
   position: fixed;
@@ -61,10 +71,12 @@ export default {
   left: 0;
   height: 100vh;
 }
-.menu > div{
+.navbar
+{
+  width:90%;
   display: flex;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 }
+
 </style>

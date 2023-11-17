@@ -28,6 +28,9 @@ export default {
 <style scoped>
 
 .leout-3x3 > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;

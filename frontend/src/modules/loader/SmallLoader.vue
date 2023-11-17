@@ -13,7 +13,7 @@
 <script>
 export default {
   setup() {
-    const numDots = 4; 
+    const numDots = 2; 
     const colors = ['#8792da', '#83f2ee','#c342d0','#50c0bd'];
 
     return {

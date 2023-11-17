@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="containerMenu">
     <NavList
       :buttons="buttons"
       :baseStyle="baseStyle"
@@ -45,6 +45,10 @@ export default {
         true;
       },
     },
+    containerMenu:{
+      type:Object,
+      default:()=>{}
+    }
   },
   setup(props) {
     const buttons = ref(menuData[props.lang][props.nav].buttons) || null;

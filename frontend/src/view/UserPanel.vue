@@ -1,19 +1,17 @@
 <template>
   <div>
-    <ProgressUser :style="isMinSize ? progressStyle : null " :size="isMinSize" />
+    <ProgressUser :style="isSmall ? progressStyle : null " />
 
-    <UserNav lang="pl" nav="user" v-if="!isMinSize" />
+    <UserNav lang="pl" nav="user" v-if="!isSmall"  :textShow="!isMedium"/>
     <NavListMin v-else />
 
-    <PanelModul :style="isMinSize ? PanelStyle : '' "  />
-    <MainFooter v-if="!isMinSize"/>
+    <PanelModul :style="isSmall? PanelStyle : '' "  />
   </div>
 </template>
 
 <script>
 import PanelModul from "@/modules/panel/MainPanel.vue";
 import NavListMin from "@/modules/nav/NavListMin.vue";
-import MainFooter from '@/modules/footer/MainFooter.vue';
 import UserNav from "@/modules/nav/UserNav.vue";
 import ProgressUser from "@/modules/progressUser/ProgressUser.vue";
 import { ref } from "vue";
@@ -22,18 +20,41 @@ export default {
   components: {
     NavListMin,
     PanelModul,
-    MainFooter,
     UserNav,
     ProgressUser,
   },
   setup() {
-    const isMinSize = ref(window.innerWidth <= 700);
-    window.addEventListener(
-      "resize",
-      () => (isMinSize.value = window.innerWidth <= 700)
-    );
+    const windowWidth = ref(window.innerWidth);
+    const isSmall = ref(false);
+    const isMedium = ref(false);
+    const isStandard = ref(false);
+
+    const setSize=(small,medium,standard)=>
+    {
+      isSmall.value = small;
+      isMedium.value = medium;
+      isStandard.value = standard;
+    }
+    const setScreenSize = () => {
+      const width = window.innerWidth;
+      windowWidth.value = width;
+
+      if (width <= 700) {
+        setSize(1,0,0);
+      } else if (width <= 1250) {
+        setSize(0,1,0);
+      } else {
+        setSize(0,0,1);
+      }
+    };
+
+    window.addEventListener("resize", setScreenSize);
+
+    setScreenSize();
     return {
-      isMinSize,
+      isSmall,
+      isMedium,
+      isStandard,
       progressStyle: {
         position:"fixed",
         top: "0",
@@ -47,7 +68,7 @@ export default {
         minWidth: "95vw",
         top: "15vh",
         rigth: "5%",
-        marginBotttom:"10%"
+        paddingBottom:"20vh"
       }
     };
   },

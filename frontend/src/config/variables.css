@@ -44,9 +44,16 @@
   --mainPage: url("@/assets/images/backgrounds/background-panel.png");
   --color: var(--color-btn);
 }
+body{
+  background-image: var(--mainPage);
+  background-size: cover;
+  height:var(--page-height);
+}
 * {
+  color:var(--color);
   font-family: var(--font-family);
   border: none;
+  background-attachment: fixed;
 }
 a {
   text-decoration: none;
@@ -60,4 +67,7 @@ h4,
 h5,
 h6 {
   color: var(--color);
+}
+body{
+  background-color: var(--mainPage);
 }

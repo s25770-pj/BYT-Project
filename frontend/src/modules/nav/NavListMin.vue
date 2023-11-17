@@ -1,5 +1,13 @@
 <template>
-  <MainNav class="nav" lang="pl" nav="user" :baseStyle="baseStyle" :classNav="classNav" :imgShow="imgShow" :textShow="textShow" />
+  <MainNav
+    class="nav"
+    lang="pl"
+    nav="user"
+    :baseStyle="baseStyle"
+    :classNav="classNav"
+    :imgShow="imgShow"
+    :textShow="textShow"
+  />
 </template>
 
 <script>
@@ -21,7 +29,7 @@ export default {
             margin: "10px",
             borderRadius: "var(--border-radius-btn)",
             transition: "all .5s ease-in-out",
-            flex:"1"
+            flex: "1",
           },
         },
         img: {
@@ -31,23 +39,19 @@ export default {
           },
         },
       },
-      classNav: ["d-flex", "justify-content-space","flex-row","w-100"],
-      imgShow:true,
-      textShow:false
+      classNav: ["d-flex", "justify-content-space", "flex-row", "w-100"],
+      imgShow: true,
+      textShow: false,
     };
   },
 };
 </script>
-
 <style scoped>
-.nav
-{
-    position:fixed;
-    bottom:0;
-    left:0;
-    z-index: 5;
-    width: 100%;
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
 }
-
-
 </style>

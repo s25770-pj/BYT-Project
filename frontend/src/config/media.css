@@ -1,14 +1,34 @@
-@media (max-width: 768px) {
+@media (max-width: 550px) {
   .leout-3x3 {
-    --grid-rows: 1fr 1fr 1fr 1fr;
+    --grid-rows: 1fr 1fr 1fr 2fr;
     --grid-cols: 1fr;
     --grid-template-areas:
       "chest "
-      "chart "
+      "chart"
       "progress"
       "main";
   }
-  :root {
-    --btn-width: 95%;
+}
+@media (min-width: 551px) and (max-width: 900px) {
+  .leout-3x3 {
+    --grid-rows: 1fr 1fr 2fr;
+    --grid-cols: 1fr 1fr;
+    --grid-template-areas:
+      "chest chest"
+      "chart progress"
+      "main main";
+  }
+}
+@media (min-width: 901px) and (max-width: 1200px){
+  .leout-3x3 {
+    --grid-cols: 1fr 1fr;
+    --grid-rows: 1fr 1fr 1fr;
+    --grid-template-areas:
+      "main chest "
+      "main chart "
+      "main progress";
+  }
+  .glass-effect {
+    width:var(--btn-width);
   }
 }
