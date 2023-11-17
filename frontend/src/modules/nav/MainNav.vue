@@ -1,6 +1,7 @@
 <template>
-  <div :class="containerMenu">
+  <div>
     <NavList
+      :style="containerMenu"
       :buttons="buttons"
       :baseStyle="baseStyle"
       :class="classNav"

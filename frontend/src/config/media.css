@@ -1,5 +1,5 @@
 @media (max-width: 550px) {
-  .leout-3x3 {
+  :root{
     --grid-rows: 1fr 1fr 1fr 2fr;
     --grid-cols: 1fr;
     --grid-template-areas:
@@ -8,9 +8,13 @@
       "progress"
       "main";
   }
+    
 }
 @media (min-width: 551px) and (max-width: 900px) {
-  .leout-3x3 {
+  :root {
+    --img-width:3.8em;
+    --img-height:3.8em;
+    --menu-size:14%;
     --grid-rows: 1fr 1fr 2fr;
     --grid-cols: 1fr 1fr;
     --grid-template-areas:
@@ -19,8 +23,11 @@
       "main main";
   }
 }
-@media (min-width: 901px) and (max-width: 1200px){
-  .leout-3x3 {
+@media (min-width: 901px) and (max-width: 1300px){
+  :root{
+    --img-width:3.5em;
+    --img-height:3.5em;
+    --font-size-btn: 16px;
     --grid-cols: 1fr 1fr;
     --grid-rows: 1fr 1fr 1fr;
     --grid-template-areas:

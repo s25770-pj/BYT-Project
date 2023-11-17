@@ -8,8 +8,9 @@
   --primary-color-light:#e9e9e9;
 }
 :root {
+
   --font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  --font-size-btn: 24px;
+  --font-size-btn: 1em;
   --color-btn: #2e2e2e;
   --bg-btn: #50c0bd;
   --border-btn: 5px solid var(--primary-color-black);
@@ -29,11 +30,19 @@
     "main chart "
     "main progress";
 }
+:root
+{
+  --img-width:3em;
+  --img-height:3em;
+}
 :root{
   --progress-border-color: rgb(88, 88, 88);
   --active: rgb(68, 230, 68);
   --inactive: rgb(186, 245, 180);
   --default: rgb(214, 214, 214);
+}
+:root{
+  --menu-size:15%;
 }
 :root.dark {
   --font-size-btn: 24px;

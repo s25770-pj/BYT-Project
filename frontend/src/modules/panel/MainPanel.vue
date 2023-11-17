@@ -24,6 +24,10 @@ export default ({
   max-width: 80vw;
   min-height: 80vh;
 }
+.contener div
+{
+  transition: width 1s;
+}
 .glass-effect {
   padding: 20px;
   border-radius: 10px;

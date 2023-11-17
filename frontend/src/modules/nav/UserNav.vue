@@ -26,15 +26,15 @@ export default {
         baseStyle:{
           btn:{
             normal:{
-              width: '100%',
+              fontSize: "var(--font-size-btn)",
+              width: '85%',
               textTransform: 'uppercase',
               fontWeight: '700',
-              fontSize: '1.2em',
               padding: '10px',
               borderRadius:'var(--border-radius-btn)',
-              transition: 'all .5s ease-in-out',
               background: 'var(--bg-btn-mNav)',
               backgroundPosition: 'right',
+              transition: "all 1s",
             },
             hover:{
               backgroundPosition: 'left',
@@ -42,14 +42,17 @@ export default {
           },
           img:{
             normal:{
-              width: '2em',
-              height: '2em'
+              width: "var(--img-width)",
+              height: "var(--img-height)"
             }
           }
         },
         containerMenu:{
           minWidth:"50%",
-          maxWidth:"90%"
+          maxWidth:"90%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }
       }
   }
@@ -63,19 +66,21 @@ export default {
 }
 
 .menu {
-
+  
   background: linear-gradient(to bottom, rgb(241 235 235 / 58%), rgb(241 235 235 / 49%));
-  width: 15%;
+  width: var(--menu-size);
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
+  transition: width 1s;
 }
 .navbar
 {
   width:90%;
   display: flex;
   align-items: center;
+  align-content: center;
   justify-content: center;
 }
 

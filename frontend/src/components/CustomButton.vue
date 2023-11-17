@@ -65,6 +65,7 @@ export default {
           style[key] = props.baseStyle.btn.hover[key];
         }
       }
+      
       return style;
     });
 
