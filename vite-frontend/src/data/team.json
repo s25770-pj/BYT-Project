@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Kacper",
+    "surname": "Pecka",
+    "roles": ["Frontend Developer","project menager"],
+    "photo": "bag",
+    "info": {
+      "link": {
+        "github": {
+          "text": "github",
+          "href": "http://github.com/K-Pecka"
+        }
+      }
+    }
+  },
+  {
+    "name": "Jakub",
+    "surname": "Pobłocki",
+    "roles": ["Backend Developer"],
+    "photo": null,
+    "info": {
+      "link": {
+        "github": {
+          "text": "github",
+          "href": "http://github.com"
+        }
+      }
+    }
+  },
+  {
+    "name": "Andrzej",
+    "surname": "Ebertowski",
+    "roles": ["Frontend Developer"],
+    "photo": null,
+    "info": {
+      "link": {
+        "github": {
+          "text": "github",
+          "href": "http://github.com"
+        }
+      }
+    }
+  },
+  {
+    "name": "Mateusz",
+    "surname": "Wiśniewski",
+    "roles": ["Grafik"],
+    "photo": null,
+    "info": {
+      "link": {
+        "github": {
+          "text": "github",
+          "href": "http://github.com"
+        }
+      }
+    }
+  },
+  {
+    "name": "Jakub",
+    "surname": "Wiśniewski",
+    "roles": ["Tester"],
+    "photo": null,
+    "info": {
+      "link": {
+        "github": {
+          "text": "github",
+          "href": "http://github.com"
+        }
+      }
+    }
+  }
+]

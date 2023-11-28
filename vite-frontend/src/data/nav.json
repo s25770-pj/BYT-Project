@@ -1,0 +1,150 @@
+{
+    "pl":{
+        "main":{
+            "buttons":[
+            {
+                "to": "logIn",
+                "icon": 
+                {
+                "src":"start",
+                "alt":"start icon",
+                "class":["d-flex","align-items-center","justify-content-center"]
+                },
+                "text": "Zaloguj się",
+                "class": []
+            },
+            {
+                "to": "/panel",
+                "icon": 
+                {
+                "src":"start",
+                "alt":"Rozpocznij",
+                "class":["d-flex","align-items-center","justify-content-center"]
+                },
+                "text": "Rozpocznij",
+                "class": []
+            },{
+                "to": "/register",
+                "icon": 
+                {
+                "src":"start",
+                "alt":"Rozpocznij",
+                "class":["d-flex","align-items-center","justify-content-center"]
+                },
+                "text": "Zarejestruj się",
+                "class": []
+            }]
+        },
+        "user":{
+            "buttons":[
+            {
+                "to": "/panel/profil",
+                "icon": 
+                {
+                "src":"profil",
+                "alt":"profil_picture",
+                "class":["d-flex","justify-content-around","align-items-center"]
+                },
+                "text": "profil",
+                "class": ["d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/panel/learning",
+                "icon": 
+                {
+                "src":"learning",
+                "alt":"profil_picture",
+                "class":["d-flex","justify-content-around","align-items-center"]
+                },
+                "text": "nauka",
+                "class": ["d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":"exercising",
+                "alt":"profil_picture",
+                "class":["icon","d-flex","justify-content-around","align-items-center"]
+                },
+                "text": "ćwiczenia",
+                "class": ["d-flex","align-items-center","m-2"]
+            },
+            {
+                "to": "/panel/equipment",
+                "icon": 
+                {
+                "src":"bag",
+                "alt":"profil_picture",
+                "class":["d-flex","justify-content-around","align-items-center"]
+                },
+                "text": "ekwipunek",
+                "class": ["d-flex","align-items-center","m-2"]
+            }]
+        },
+        "footer":{
+            "buttons":[
+            {
+                "to": "/aboutUs",
+                "icon": 
+                {
+                "src":"aboutUs",
+                "alt":"icon",
+                "class":["icon","icon_min"]
+                },
+                "text": "o nas",
+                "class": ["footer-link"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":null,
+                "alt":"icon"
+                },
+                "text": "regulamin",
+                "class": ["footer-link"]
+            },
+            {
+                "to": "/",
+                "icon": 
+                {
+                "src":null,
+                "alt":"icon"
+                },
+                "text": "kontakt",
+                "class": ["footer-link"]
+            }]
+        },
+        "settings":{
+            "buttons":[
+                {
+                    "to": null,
+                    "icon": 
+                    {
+                    "src":null,
+                    "alt":"icon",
+                    "class":["icon","icon_min"]
+                    },
+                    "text": "zmień motyw",
+                    "class": ["footer-link"]
+                }
+            ]
+        }
+    },
+    "en":{
+        "main":{
+            "buttons":[
+            {
+                "to": "/",
+                "icon": {
+                "src":"/image1.png",
+                "alt":"Rozpocznij"
+                },
+                "text": "Rozpocznij",
+                "class": ["btn"]
+            }]
+        }
+        
+    }
+}
