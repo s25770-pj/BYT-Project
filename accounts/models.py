@@ -1,50 +1,92 @@
-from django.utils.translation import gettext as _
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-from django.contrib.auth.models import AbstractUser, Permission, PermissionsMixin, Group
 
 
-class Parent(AbstractUser, PermissionsMixin):
-    login = models.CharField(max_length=50, blank=False, null=False)
-    password = models.CharField(max_length=50, blank=False, null=False)
-    email = models.CharField(max_length=100, blank=False, null=False)
+class KidUserManager(BaseUserManager):
+    def create_user(self, email, password, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+
+class KidUser(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
-    is_blocked = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+
+    objects = KidUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
     groups = models.ManyToManyField(
-        Group,
-        verbose_name=_('Grupy'),
+        'auth.Group',
+        related_name='kid_groups',
         blank=True,
-        related_name='parent_set',
-        related_query_name='parent'
+        verbose_name='groups',
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
     )
     user_permissions = models.ManyToManyField(
-        Permission,
-        verbose_name=_('Uprawnienia użytkownika'),
+        'auth.Permission',
+        related_name='kid_permissions',
         blank=True,
-        related_name='parent_user_permissions',
-        related_query_name='user'
+        verbose_name='user permissions',
+        help_text='Specific permissions for this user.',
     )
-    role = models.CharField(max_length=20, default='Rodzic')
 
     def __str__(self):
-        return f"{self.id}"
+        return self.email
 
     class Meta:
-        verbose_name = 'Rodzic'
-        verbose_name_plural = 'Rodzice'
+        permissions = (('can_do_something', 'Can do something'),)
+        base_manager_name = 'objects'
+        swappable = 'AUTH_USER_MODEL'
 
 
-class Child(models.Model):
-    role = models.CharField(max_length=10, default='Dziecko')
-    parent = models.ForeignKey(Parent, on_delete=models.CASCADE)
-    username = models.CharField(max_length=30, blank=True, null=True, unique=True)
-    password = models.CharField(max_length=50, blank=False, null=False)
-    profile_picture = models.ImageField(blank=True, null=True)
+class ParentUserManager(BaseUserManager):
+    def create_user(self, email, password, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+
+class ParentUser(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
-    is_blocked = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+
+    objects = ParentUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='parent_groups',
+        blank=True,
+        verbose_name='groups',
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='parent_permissions',
+        blank=True,
+        verbose_name='user permissions',
+        help_text='Specific permissions for this user.',
+    )
 
     def __str__(self):
-        return f"{self.username}"
+        return self.email
 
     class Meta:
-        verbose_name = 'Dziecko'
-        verbose_name_plural = 'Dzieci'
+        permissions = (('can_do_something', 'Can do something'),)
+        base_manager_name = 'objects'
+        swappable = 'AUTH_USER_MODEL'

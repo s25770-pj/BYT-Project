@@ -1,11 +1,13 @@
 from django.urls import path
-from . import api_views
+
+from accounts.api_views import KidUserCreateView, ParentUserCreateView, ParentUserLoginView, KidUserLoginView, UserDetailView
 
 app_name = 'accounts'
 
 urlpatterns = [
-    path('account/login/', api_views.login_view, name='login'),
-    path('account/create/parent/', api_views.register_parent_view, name='register_parent'),
-    path('account/create/child/', api_views.register_child_view, name='register_child'),
-    path('account/delete/', api_views.delete_account_view, name='delete_account'),
+    path('kid/create/', KidUserCreateView.as_view(), name='kiduser_create'),
+    path('kid/login/', KidUserLoginView.as_view(), name='kiduser_login'),
+    path('parent/create/', ParentUserCreateView.as_view(), name='parentuser_create'),
+    path('parent/login/', ParentUserLoginView.as_view(), name='parentuser_login'),
+    path('user-details/', UserDetailView.as_view(), name='user-details'),
 ]
