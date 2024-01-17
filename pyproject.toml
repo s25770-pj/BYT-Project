@@ -8,9 +8,6 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "3.10.12"
-
-
-[tool.poetry.group.dev.dependencies]
 asgiref = {version = "3.7.2", allow-prereleases = true}
 confusable-homoglyphs = {version = "3.2.0", allow-prereleases = true}
 django = {version = "4.2.5", allow-prereleases = true}

@@ -1,21 +1,26 @@
 from rest_framework import serializers
-from models import KidUser, ParentUser
+from django.contrib.auth import get_user_model
 
 
-class KidUserSerializer(serializers.ModelSerializer):
+class RegisterSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
-        model = KidUser
-        fields = ['email', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+        model = get_user_model()
+        fields = ('email', 'password', 'first_name', 'last_name')
+
+    def create(self, validated_data):
+        user = get_user_model().objects.create_user(**validated_data)
+        return user
 
 
-class ParentUserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ParentUser
-        fields = ['email', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+        model = get_user_model()
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'password']
 
 
-class UserLoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
+class LogoutSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = '__all__'

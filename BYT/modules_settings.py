@@ -11,7 +11,7 @@ except:
     DEBUG = False
 
 INSTALLED_EXTRA_APPS = [
-
+    'rest_framework_simplejwt',
 ]
 
 OWN_APPS = [

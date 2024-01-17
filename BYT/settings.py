@@ -42,11 +42,22 @@ except:
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'rest_framework.authtoken',
+    'rest_framework',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'drf_yasg',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8088',
 ]
 
 if INSTALLED_EXTRA_APPS:
@@ -60,9 +71,11 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'drf_yasg.middleware.SwaggerMiddleware'
 ]
 
 ROOT_URLCONF = 'BYT.urls'
@@ -82,8 +95,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'BYT.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -116,7 +127,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ]
 }
+
 
 LANGUAGE_CODE = 'pl'
 
@@ -132,6 +147,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ### AUTHENTICATION
 
-AUTH_USER_MODEL = 'BYT.models.KidUser'
-
-PARENT_AUTH_USER_MODEL = 'BYT.models.ParentUser'
+AUTH_USER_MODEL = 'auth.User'

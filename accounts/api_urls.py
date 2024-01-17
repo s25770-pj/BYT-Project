@@ -1,13 +1,14 @@
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from django.urls import path
+from .api_views import LoginView, LogoutView, RegisterView, UserDataView
 
-from accounts.api_views import KidUserCreateView, ParentUserCreateView, ParentUserLoginView, KidUserLoginView, UserDetailView
-
-app_name = 'accounts'
+app_name = 'api_accounts'
 
 urlpatterns = [
-    path('kid/create/', KidUserCreateView.as_view(), name='kiduser_create'),
-    path('kid/login/', KidUserLoginView.as_view(), name='kiduser_login'),
-    path('parent/create/', ParentUserCreateView.as_view(), name='parentuser_create'),
-    path('parent/login/', ParentUserLoginView.as_view(), name='parentuser_login'),
-    path('user-details/', UserDetailView.as_view(), name='user-details'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('user-data/', UserDataView.as_view(), name='user-data'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

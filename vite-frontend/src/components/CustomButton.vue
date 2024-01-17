@@ -39,7 +39,6 @@ const importAll = (r) => {
 };
 importAll(import.meta.glob("@/assets/icons/*.png"));
 
-
 export default {
   props: {
     baseStyle: Object,
