@@ -1,1 +1,0 @@
-web: gunicorn BYT.wsgi
