@@ -17,6 +17,7 @@ CONFIG_ALLOWED_HOSTS = [
     '127.0.0.1',
     '57.128.197.32',
     'localhost',
+    '*',
 ]
 MAX_UPLOAD_SIZE = 104785760
 
