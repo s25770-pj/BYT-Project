@@ -1,6 +1,4 @@
-from patterns import patterns
 from django.contrib import admin
-from django.template.defaulttags import url
 from django.urls import path, include, re_path
 from django.conf import settings
 from drf_yasg.views import get_schema_view
