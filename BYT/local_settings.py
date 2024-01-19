@@ -12,7 +12,7 @@ DEBUG = True
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, '_static')
-STATIC_URL = '/_static/'
+STATIC_URL = '_static/'
 CONFIG_ALLOWED_HOSTS = [
     '127.0.0.1',
     '57.128.197.32',

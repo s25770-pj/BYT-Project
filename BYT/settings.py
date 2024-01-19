@@ -34,7 +34,7 @@ except:
 try:
     STATIC_URL
 except:
-    STATIC_URL = os.path.join(BASE_DIR, '/_static/')
+    STATIC_URL = os.path.join(BASE_DIR, '_static/')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
