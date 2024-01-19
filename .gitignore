@@ -9,7 +9,7 @@ _media/
 
 db.sqlite3
 db.sqlite3-journal
-local_settings.py
+#local_settings.py
 .cache
 .coverage
 .coverage.*

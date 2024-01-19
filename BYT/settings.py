@@ -1,9 +1,5 @@
-from datetime import timedelta
-from pathlib import Path
-import os
-
-from local_settings import *
-from modules_settings import *
+from .local_settings import *
+from .modules_settings import *
 
 SECRET_KEY = 'django-insecure-yza7qxc@j!+_ujf@^_vf2*y!4wwu_)yswq(aso5r&o#rowl-!s'
 
