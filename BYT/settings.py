@@ -5,7 +5,7 @@ SECRET_KEY = 'django-insecure-yza7qxc@j!+_ujf@^_vf2*y!4wwu_)yswq(aso5r&o#rowl-!s
 
 if DEBUG:
     ALLOWED_HOSTS = [
-        ''
+        '*'
     ]
 else:
     if CONFIG_ALLOWED_HOSTS:
