@@ -34,7 +34,7 @@ except:
 try:
     STATIC_URL
 except:
-    STATIC_URL = os.path.join(BASE_DIR, '_static/')
+    STATIC_URL = os.path.join(BASE_DIR, '/_static/')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -71,8 +71,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'drf_yasg.middleware.SwaggerMiddleware'
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'BYT.urls'
 
