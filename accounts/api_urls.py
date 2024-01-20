@@ -6,10 +6,7 @@ from django.contrib.auth.views import LoginView
 app_name = 'api_accounts'
 
 urlpatterns = [
-    path('login/', LoginView.as_view()),
-#     path('logout/', LogoutView.as_view(), name='logout'),
-#     path('register/', RegisterView.as_view(), name='register'),
-#     path('user-data/', UserDataView.as_view(), name='user-data'),
+    path('login/', LoginView.as_view(), name='login'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
