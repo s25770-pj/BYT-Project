@@ -1,8 +1,6 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework.response import Response
 from rest_framework import generics, status, permissions
-from django.contrib.auth.views import LoginView
-from django.contrib import messages
 
 from accounts.serializers import UserSerializer, LogoutSerializer
 
@@ -12,8 +10,18 @@ class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
 
 
-class LoginView(LoginView):
-    pass
+def login_view(request):
+    if not request.user.is_authenticated:
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return Response({'detail': 'Login successful.'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class LogoutView(generics.DestroyAPIView):
