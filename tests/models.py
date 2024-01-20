@@ -10,7 +10,7 @@ class Exercise(models.Model):
     difficulty = models.CharField(max_length=64, choices=C_DIFFICULTY_CHOICES)
 
     @classmethod
-    def get_time_left(cls,d obj):
+    def get_time_left(cls, obj):
         return obj.time_left.total_seconds()
 
 
