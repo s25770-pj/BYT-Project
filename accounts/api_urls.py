@@ -1,5 +1,5 @@
 from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
-from auth.views import MyObtainTokenPairView
+from django.contrib.auth.views import MyObtainTokenPairView
 from django.urls import path
 from .api_views import CustomLoginView, LogoutView, RegisterView, UserDataView
 
