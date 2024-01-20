@@ -12,9 +12,9 @@ class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
 
 
-class LoginView(generics.CreateAPIView):
+class CustomLoginView(generics.CreateAPIView):
     serializer_class = UserSerializer
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         username = request.data.get('username')
         password = request.data.get('password')
 
