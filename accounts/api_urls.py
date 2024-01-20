@@ -1,6 +1,6 @@
-from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
-from django.urls import path
-from .api_views import CustomLoginView, LogoutView, RegisterView, UserDataView
+# from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
+# from django.urls import path
+# from .api_views import CustomLoginView, LogoutView, RegisterView, UserDataView
 
 app_name = 'api_accounts'
 
