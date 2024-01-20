@@ -23,8 +23,10 @@ class LoginView(generics.CreateAPIView):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful.')
+            return Response({'detail': 'Login successful.'}, status=status.HTTP_200_OK)
         else:
             messages.error(request, 'Invalid login credentials.')
+            return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class LogoutView(generics.DestroyAPIView):
