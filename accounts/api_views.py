@@ -12,7 +12,7 @@ class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
 
 
-class CustomLoginView(LoginView):
+class LoginView(LoginView):
     pass
 
 
