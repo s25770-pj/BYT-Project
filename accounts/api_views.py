@@ -6,7 +6,9 @@ from accounts.serializers import UserSerializer, LogoutSerializer
 
 
 class RegisterView(generics.CreateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = RegisterSerializer
+    authentication_classes = []
+    permission_classes = []
     queryset = get_user_model().objects.all()
 
 
