@@ -10,10 +10,10 @@ class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
 
 
-def login_view(request):
-    if not request.user.is_authenticated:
-        username = request.POST["username"]
-        password = request.POST["password"]
+class LoginView(generics.CreateAPIView):
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
 
         user = authenticate(request, username=username, password=password)
 
