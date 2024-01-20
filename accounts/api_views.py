@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework.response import Response
 from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
+from django.contrib import messages
 
 from accounts.serializers import UserSerializer, LogoutSerializer
 
@@ -19,12 +20,11 @@ class LoginView(generics.CreateAPIView):
 
         user = authenticate(request, username=username, password=password)
 
-        if user:
+        if user is not None:
             login(request, user)
-            token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
+            messages.success(request, 'Login successful.')
         else:
-            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+            messages.error(request, 'Invalid login credentials.')
 
 
 class LogoutView(generics.DestroyAPIView):
