@@ -4,6 +4,7 @@ from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.views import APIView
 
 from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer
 
@@ -36,14 +37,10 @@ class LoginView(generics.CreateAPIView):
             return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class LogoutView(generics.DestroyAPIView):
+class LogoutView(APIView):
     serializer_class = LogoutSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    queryset = None
-
-    def get_queryset(self):
-        return self.queryset
 
     def post(self, request, *args, **kwargs):
         request.auth.delete()
