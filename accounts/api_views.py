@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
 
-from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer
+from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer
 
 
 class RegisterView(generics.CreateAPIView):
@@ -41,7 +41,7 @@ class LogoutView(generics.DestroyAPIView):
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
-    serializer_class = RegisterSerializer
+    serializer_class = GetUserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
