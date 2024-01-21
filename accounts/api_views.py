@@ -40,10 +40,10 @@ class LogoutView(generics.DestroyAPIView):
     serializer_class = LogoutSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
-    lookup_field = 'pk'
+    queryset = None
 
     def get_queryset(self):
-        return Token.objects.none()
+        return self.queryset
 
     def post(self, request, *args, **kwargs):
         request.auth.delete()
