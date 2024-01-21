@@ -39,7 +39,7 @@ class LoginView(generics.CreateAPIView):
 class LogoutView(generics.DestroyAPIView):
     serializer_class = LogoutSerializer
     authentication_classes = [TokenAuthentication]
-    authentication_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         request.auth.delete()
