@@ -1,7 +1,8 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework.response import Response
-from rest_framework import generics, status, permissions
+from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer
 
@@ -35,6 +36,7 @@ class LoginView(generics.CreateAPIView):
 
 class LogoutView(generics.DestroyAPIView):
     serializer_class = LogoutSerializer
+    authentication_classes = [IsAuthenticated]
     def post(self, request):
         logout(request)
         return Response("User logged out")
@@ -42,7 +44,7 @@ class LogoutView(generics.DestroyAPIView):
 
 class UserDataView(generics.RetrieveUpdateAPIView):
     serializer_class = GetUserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.request.user
