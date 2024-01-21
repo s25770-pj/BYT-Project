@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework.response import Response
 from rest_framework import generics, status, permissions
+from rest_framework.authtoken.models import Token
 
 from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer
 
@@ -25,7 +26,9 @@ class LoginView(generics.CreateAPIView):
 
         if user is not None:
             login(request, user)
-            return Response({'detail': 'Login successful.'}, status=status.HTTP_200_OK)
+
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key, 'detail': 'Login successful.'}, status=status.HTTP_200_OK)
         else:
             return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -38,7 +41,7 @@ class LogoutView(generics.DestroyAPIView):
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = RegisterSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
