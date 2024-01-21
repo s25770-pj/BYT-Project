@@ -7,7 +7,7 @@ from .serializers import ExerciseSerializer, ClassRoomSerializer
 
 class GetExercisesListApiView(generics.ListAPIView):
     serializer_class = ExerciseSerializer
-    authentication_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         return Exercise.objects.all()
@@ -15,4 +15,4 @@ class GetExercisesListApiView(generics.ListAPIView):
 
 class GetClassRoomsListApiView(generics.ListAPIView):
     serializer_class = ClassRoomSerializer
-    authentication_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
