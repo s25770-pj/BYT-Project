@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import generics, status
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
 
 from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer
 
@@ -20,26 +21,30 @@ class LoginView(generics.CreateAPIView):
     permission_classes = []
 
     def post(self, request,  *args, **kwargs):
+
         username = request.data.get('username')
         password = request.data.get('password')
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:
+        if user is not None and user.is_active:
             login(request, user)
 
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key, 'detail': 'Login successful.'}, status=status.HTTP_200_OK)
+            return Response({'token': token.key, 'detail': 'Login successful.'}, status=status.HTTP_201_CREATED)
         else:
             return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 class LogoutView(generics.DestroyAPIView):
     serializer_class = LogoutSerializer
+    authentication_classes = [TokenAuthentication]
     authentication_classes = [IsAuthenticated]
-    def post(self, request):
+
+    def post(self, request, *args, **kwargs):
+        request.auth.delete()
         logout(request)
-        return Response("User logged out")
+        return Response({'detail': 'Logout successful.'}, status=status.HTTP_200_OK)
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
