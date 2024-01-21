@@ -41,6 +41,9 @@ class LogoutView(generics.DestroyAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return Token.objects.none()
+
     def post(self, request, *args, **kwargs):
         request.auth.delete()
         logout(request)
