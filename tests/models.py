@@ -15,11 +15,11 @@ class Exercise(models.Model):
 
 
 class ClassRoom(models.Model):
-    name = models.CharField(max_length=128, unique=True, null=False, blank=False)
-    code = models.CharField(max_length=32, unique=True, null=False, blank=False)
+    name = models.CharField(max_length=128, unique=True)
+    code = models.CharField(max_length=32, unique=True)
     exercises = models.ManyToManyField(Exercise, null=True, blank=True)
-    users = models.ManyToManyField(CustomUser, null=False, blank=False)
-    created_by = models.ForeignKey(CustomUser, on_delete=models.PROTECT)
+    users = models.ManyToManyField(CustomUser, null=False, blank=False, related_name='created_classrooms')
+    created_by = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name='enrolled_classrooms')
 
     def __str__(self):
         return self.name
