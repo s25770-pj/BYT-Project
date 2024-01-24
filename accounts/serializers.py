@@ -54,7 +54,9 @@ class ClassSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = self.context['request'].user
-        ClassRoom.objects.create(created_by=user, name=validated_data['name'], users=user)
+        classroom = ClassRoom.objects.create(created_by=user, name=validated_data['name'])
+        classroom.users.set([user])
+        return classroom
 
     class Meta:
         model = ClassRoom
