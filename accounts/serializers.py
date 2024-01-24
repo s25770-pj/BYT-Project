@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+from tests.models import ClassRoom
+
 
 class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -46,3 +48,13 @@ class LogoutSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = '__all__'
+
+
+class ClassSerializer(serializers.ModelSerializer):
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        ClassRoom.objects.create(created_by=user, name=validated_data['name'], users=user)
+
+    class Meta:
+        model = ClassRoom

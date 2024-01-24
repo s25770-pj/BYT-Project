@@ -6,7 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 
-from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer
+from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer, \
+    ClassSerializer
 
 
 class RegisterView(generics.CreateAPIView):
@@ -59,4 +60,12 @@ class UserDataView(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
+
+
+class CreateClassView(generics.CreateAPIView):
+    serializer_class = ClassSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
