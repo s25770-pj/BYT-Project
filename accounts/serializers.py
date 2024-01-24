@@ -58,3 +58,4 @@ class ClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClassRoom
+        fields = '__all__'
