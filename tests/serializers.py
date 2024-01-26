@@ -22,8 +22,8 @@ class CreateClassRoomSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         with transaction.atomic():
             try:
-                data = self.context['request']
-                user = data.get('user')
+                request = self.context.get('request')
+                user = request.user
                 classroom = ClassRoom.objects.create(
                     name=validated_data['name'], code=validated_data['code'],
                     created_by=user
