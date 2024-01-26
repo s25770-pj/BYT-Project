@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Exercise, ClassRoom
-from .serializers import ExerciseSerializer, ClassRoomSerializer
+from .serializers import ExerciseSerializer, ClassRoomSerializer, CreateClassRoomSerializer
 
 
 class GetExercisesListApiView(generics.ListAPIView):
@@ -19,3 +19,12 @@ class GetClassRoomsListApiView(generics.ListAPIView):
 
     def get_queryset(self):
         return ClassRoom.objects.all()
+
+
+class CreateClassView(generics.CreateAPIView):
+    serializer_class = CreateClassRoomSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+

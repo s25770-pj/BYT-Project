@@ -6,21 +6,16 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 
-from accounts.serializers import UserSerializer, LogoutSerializer, RegisterSerializer, GetUserSerializer, \
-    ClassSerializer
+from accounts.serializers import LogoutSerializer, RegisterSerializer, UserSerializer
 
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
-    authentication_classes = []
-    permission_classes = []
     queryset = get_user_model().objects.all()
 
 
 class LoginView(generics.CreateAPIView):
     serializer_class = UserSerializer
-    authentication_classes = []
-    permission_classes = []
 
     def post(self, request,  *args, **kwargs):
 
@@ -50,7 +45,7 @@ class LogoutView(APIView):
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
-    serializer_class = GetUserSerializer
+    serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
@@ -60,12 +55,4 @@ class UserDataView(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
-
-
-class CreateClassView(generics.CreateAPIView):
-    serializer_class = ClassSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
 
