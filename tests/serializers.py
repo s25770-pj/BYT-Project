@@ -20,19 +20,19 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 class CreateClassRoomSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
-        with transaction.atomic():
-            try:
-                request = self.context.get('request')
-                user = request.user
-                classroom = ClassRoom.objects.create(
-                    name=validated_data['name'], code=validated_data['code'],
-                    created_by=user
-                )
-                classroom.users = set(user)
-                classroom.save()
-                return {'response': 'classroom created successfully!', 'classroom': classroom}
-            except Exception as ex:
-                return {'response': str(ex)}
+        print(validated_data)
+        try:
+            request = self.context.get('request')
+            user = request.user
+            classroom = ClassRoom.objects.create(
+                name=validated_data['name'], code=validated_data['code'],
+                created_by=user
+            )
+            classroom.users = set(user)
+            classroom.save()
+            return {'response': 'classroom created successfully!', 'classroom': classroom}
+        except Exception as ex:
+            return {'response': str(ex)}
 
     class Meta:
         model = ClassRoom
