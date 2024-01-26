@@ -12,10 +12,14 @@ from accounts.serializers import LogoutSerializer, RegisterSerializer, UserSeria
 class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     queryset = get_user_model().objects.all()
+    authentication_classes = []
+    permission_classes = []
 
 
 class LoginView(generics.CreateAPIView):
     serializer_class = UserSerializer
+    authentication_classes = []
+    permission_classes = []
 
     def post(self, request,  *args, **kwargs):
 
