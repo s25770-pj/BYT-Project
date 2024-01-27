@@ -25,7 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 class GetUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = '__all__'
+        fields = ['username', 'first_name', 'last_name', 'email', 'type', 'groups']
 
 
 class RegisterSerializer(serializers.ModelSerializer):
