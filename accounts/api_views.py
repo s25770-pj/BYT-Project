@@ -47,7 +47,6 @@ class LogoutView(generics.DestroyAPIView):
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
-    serializer_class = GetUserSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
@@ -55,6 +54,5 @@ class UserDataView(generics.RetrieveUpdateAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+        return Response(instance)
 
