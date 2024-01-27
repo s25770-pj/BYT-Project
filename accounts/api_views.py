@@ -7,7 +7,6 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 
 from accounts.serializers import LogoutSerializer, RegisterSerializer, UserSerializer, GetUserSerializer
-from accounts.serializers import UserSerializer, LogoutSerializer
 
 
 class RegisterView(generics.CreateAPIView):
