@@ -54,5 +54,6 @@ class UserDataView(generics.RetrieveUpdateAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        return Response(instance)
+        res = json.dumps(instance)
+        return Response(res)
 
