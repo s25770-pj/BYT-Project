@@ -6,8 +6,6 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.views import APIView
 
-import json
-
 from accounts.serializers import LogoutSerializer, RegisterSerializer, UserSerializer
 from accounts.serializers import UserSerializer, LogoutSerializer
 
@@ -49,6 +47,7 @@ class LogoutView(generics.DestroyAPIView):
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
+    serializer_class = GetUserSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
@@ -56,6 +55,6 @@ class UserDataView(generics.RetrieveUpdateAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        res = json.dumps(instance)
-        return Response(res)
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
 
