@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
-from .models import CustomUser
-
 from tests.models import ClassRoom
 
 
@@ -26,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class GetUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
+        model = get_user_model()
         fields = '__all__'
 
 
