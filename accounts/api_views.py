@@ -39,6 +39,6 @@ class UserDataView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    def retrieve(self, request, *args, **kwargs):
-        return Response(CustomUser.objects.get(self.request.user))
-
+    user_instance = CustomUser.objects.get(username=self.request.user.username)
+    serializer = UserSerializer(user_instance)
+    return Response(serializer.data)
