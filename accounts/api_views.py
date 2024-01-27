@@ -5,6 +5,7 @@ from rest_framework.authtoken.models import Token
 
 from accounts.serializers import UserSerializer, LogoutSerializer
 
+from .models import CustomUser
 
 class RegisterView(generics.CreateAPIView):
     serializer_class = UserSerializer
@@ -39,5 +40,5 @@ class UserDataView(generics.RetrieveUpdateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def retrieve(self, request, *args, **kwargs):
-        return Response(self.request.user)
+        return Response(CustomUser.objects.get(self.request.user))
 
