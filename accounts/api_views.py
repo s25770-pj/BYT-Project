@@ -1,62 +1,43 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework.response import Response
-from rest_framework import generics, status
+from rest_framework import generics, status, permissions
 from rest_framework.authtoken.models import Token
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.views import APIView
 
-from accounts.serializers import LogoutSerializer, RegisterSerializer, UserSerializer
+from accounts.serializers import UserSerializer, LogoutSerializer
 
 
 class RegisterView(generics.CreateAPIView):
-    serializer_class = RegisterSerializer
+    serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
-    authentication_classes = []
-    permission_classes = []
 
 
 class LoginView(generics.CreateAPIView):
     serializer_class = UserSerializer
-    authentication_classes = []
-    permission_classes = []
-
-    def post(self, request,  *args, **kwargs):
-
+    def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
 
         user = authenticate(request, username=username, password=password)
 
-        if user is not None and user.is_active:
+        if user:
             login(request, user)
-
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key, 'detail': 'Login successful.'}, status=status.HTTP_201_CREATED)
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
         else:
-            return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
-class LogoutView(APIView):
+class LogoutView(generics.DestroyAPIView):
     serializer_class = LogoutSerializer
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, *args, **kwargs):
-        request.auth.delete()
+    def post(self, request):
         logout(request)
-        return Response({'detail': 'Logout successful.'}, status=status.HTTP_200_OK)
+        return Response("User logged out")
 
 
 class UserDataView(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_object(self):
-        return self.request.user
+    permission_classes = [permissions.IsAuthenticated]
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance)
-        return Response(serializer.data)
+        return Response(self.request.user)
 
