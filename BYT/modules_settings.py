@@ -16,6 +16,7 @@ INSTALLED_EXTRA_APPS = [
 
 OWN_APPS = [
     'accounts',
+    'tests',
 ]
 
 EXTRA_MIDDLEWARE_CLASSES = [

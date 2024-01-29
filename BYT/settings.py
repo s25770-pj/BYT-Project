@@ -1,6 +1,4 @@
 from datetime import timedelta
-from pathlib import Path
-import os
 
 from .local_settings import *
 from .modules_settings import *
@@ -9,7 +7,7 @@ SECRET_KEY = 'django-insecure-yza7qxc@j!+_ujf@^_vf2*y!4wwu_)yswq(aso5r&o#rowl-!s
 
 if DEBUG:
     ALLOWED_HOSTS = [
-        ''
+        '*'
     ]
 else:
     if CONFIG_ALLOWED_HOSTS:
@@ -38,7 +36,7 @@ except:
 try:
     STATIC_URL
 except:
-    STATIC_URL = os.path.join(BASE_DIR, '/static/')
+    STATIC_URL = os.path.join(BASE_DIR, '/_static/')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -75,8 +73,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # 'drf_yasg.middleware.SwaggerMiddleware'
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'BYT.urls'
 
@@ -95,6 +96,10 @@ TEMPLATES = [
         },
     },
 ]
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 DATABASES = {
     'default': {
@@ -125,6 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'

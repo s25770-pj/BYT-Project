@@ -7,9 +7,9 @@ env.bak/
 venv.bak/
 _media/
 
-db.sqlite3
+#db.sqlite3
 db.sqlite3-journal
-local_settings.py
+#local_settings.py
 .cache
 .coverage
 .coverage.*
@@ -23,10 +23,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a0ce1d7588096a27200587e98069f690855d962a
 .DS_Store
 node_modules
 /dist
