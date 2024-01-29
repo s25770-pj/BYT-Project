@@ -1,20 +1,5 @@
-from django.db import transaction
 from rest_framework import serializers
 from .models import Exercise, ClassRoom
-
-
-class ExerciseSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Exercise
-        fields = '__all__'
-
-
-class ClassRoomSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = ClassRoom
-        fields = '__all__'
 
 
 class CreateClassRoomSerializer(serializers.ModelSerializer):
@@ -22,13 +7,12 @@ class CreateClassRoomSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         print(validated_data)
         try:
-            request = self.context.get('request')
-            user = request.user
+            user = self.context.get('request').user
             classroom = ClassRoom.objects.create(
-                name=validated_data['name'], code=validated_data['code'],
+                name=validated_data['name'],
                 created_by=user
             )
-            classroom.users = set(user)
+            classroom.members = set(user)
             classroom.save()
             return {'response': 'classroom created successfully!', 'classroom': classroom}
         except Exception as ex:
@@ -36,4 +20,18 @@ class CreateClassRoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClassRoom
-        fields = '__all__'
+        fields = ['name', 'code', 'users', 'created_by', 'exercises']
+
+
+class ExerciseSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Exercise
+        fields = ['name', 'difficulty', 'time']
+
+
+class ClassRoomSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ClassRoom
+        fields = ['name', 'code', 'exercises', 'users']

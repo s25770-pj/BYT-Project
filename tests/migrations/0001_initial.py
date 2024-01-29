@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128)),
-                ('time_left', models.DurationField()),
+                ('time', models.DurationField()),
                 ('difficulty', models.CharField(choices=[('very_easy', 'Very easy'), ('easy', 'Easy'), ('medium', 'Medium'), ('advanced', 'Advanced'), ('hard', 'Hard')], max_length=64)),
             ],
         ),
