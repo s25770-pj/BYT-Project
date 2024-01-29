@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='classroom',
-            name='users',
+            name='members',
             field=models.ManyToManyField(related_name='created_classrooms', to=settings.AUTH_USER_MODEL),
         ),
     ]

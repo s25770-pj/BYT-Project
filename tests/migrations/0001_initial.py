@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128, unique=True)),
                 ('code', models.CharField(max_length=32, unique=True)),
-                ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                ('members', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
                 ('exercises', models.ManyToManyField(to='tests.exercise')),
             ],
         ),
