@@ -28,8 +28,8 @@ class LoginView(generics.CreateAPIView):
 
         if user is not None and user.is_active:
             login(request, user)
-            token = Token.generate_key()
-            return Response({'token': token, 'detail': 'Login successful.'}, status=status.HTTP_201_CREATED)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key, 'detail': 'Login successful.'}, status=status.HTTP_201_CREATED)
         else:
             return Response({'detail': 'Invalid login credentials.'}, status=status.HTTP_401_UNAUTHORIZED)
 
