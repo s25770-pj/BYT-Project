@@ -20,7 +20,7 @@ class CreateClassRoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClassRoom
-        fields = ['name', 'code', 'users', 'created_by', 'exercises']
+        fields = ['name', 'code', 'members', 'created_by', 'exercises']
 
 
 class ExerciseSerializer(serializers.ModelSerializer):
@@ -34,4 +34,4 @@ class ClassRoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClassRoom
-        fields = ['name', 'code', 'exercises', 'users']
+        fields = ['name', 'code', 'exercises', 'members']
