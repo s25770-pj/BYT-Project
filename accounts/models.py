@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-
 USER_TYPE_CHOICES = [
     ('nauczyciel', 'Teacher'),
     ('uczeń', 'Student')
