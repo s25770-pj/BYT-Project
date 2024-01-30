@@ -32,7 +32,7 @@ class CreateClassView(generics.CreateAPIView):
         user = self.request.user
         if serializer.is_valid():
             validated_data = serializer.validated_data
-            return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
+            return Response(create_instance(serializer, validated_data), status=status.HTTP_201_CREATED)
 
 
 class CreateExerciseApiView(generics.CreateAPIView):
@@ -43,4 +43,4 @@ class CreateExerciseApiView(generics.CreateAPIView):
         user = self.request.user
         if user and serializer.is_valid():
             validated_data = serializer.validated_data
-            return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
+            return Response(create_instance(serializer, validated_data), status=status.HTTP_201_CREATED)
