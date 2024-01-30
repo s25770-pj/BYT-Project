@@ -24,7 +24,7 @@ class GetClassRoomsListApiView(generics.ListAPIView):
         return ClassRoom.objects.all()
 
 
-class CreateClassView(generics.CreateAPIView):
+class CreateClassApiView(generics.CreateAPIView):
     serializer_class = ClassRoomSerializer
     permission_classes = [IsAuthenticated]
 
@@ -32,7 +32,8 @@ class CreateClassView(generics.CreateAPIView):
         user = self.request.user
         if serializer.is_valid():
             validated_data = serializer.validated_data
-            return Response(create_instance(serializer, validated_data), status=status.HTTP_201_CREATED)
+            validated_data['members'] = user
+            return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
 
 
 class CreateExerciseApiView(generics.CreateAPIView):

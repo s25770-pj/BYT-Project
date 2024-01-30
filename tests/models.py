@@ -21,7 +21,6 @@ class ClassRoom(ModelBase):
     code = models.CharField(max_length=16, unique=True)
     exercises = models.ManyToManyField(Exercise, blank=True)
     members = models.ManyToManyField(CustomUser, blank=False, related_name='created_classrooms')
-    created_by = models.ForeignKey(CustomUser, on_delete=models.PROTECT, related_name='enrolled_classrooms')
 
     def __str__(self):
         return self.name
