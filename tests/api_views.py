@@ -1,8 +1,13 @@
-from rest_framework import generics
+from django.db import transaction
+
+from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from .models import Exercise, ClassRoom
-from .serializers import ExerciseSerializer, ClassRoomSerializer, CreateClassRoomSerializer
+from .serializers import ExerciseSerializer, ClassRoomSerializer
+
+from utils.api_views import create_instance
 
 
 class GetExercisesListApiView(generics.ListAPIView):
@@ -22,9 +27,26 @@ class GetClassRoomsListApiView(generics.ListAPIView):
 
 
 class CreateClassView(generics.CreateAPIView):
-    serializer_class = CreateClassRoomSerializer
-    permission_classes = [IsAuthenticated]
+    serializer_class = ClassRoomSerializer
+    # permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        user = self.request.user
+        with transaction.atomic():
+            try:
+                if user and serializer.is_valid():
+                    validated_data = serializer.validated_data
+                    return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
 
+
+class CreateExerciseApiView(generics.CreateAPIView):
+    serializer_class = ExerciseSerializer
+    # permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        with transaction.atomic():
+            try:
+                if user and serializer.is_valid():
+                    validated_data = serializer.validated_data
+                    return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)

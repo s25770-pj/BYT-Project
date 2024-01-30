@@ -3,8 +3,10 @@ from django.db import models
 from accounts.models import CustomUser
 from tests.consts import C_DIFFICULTY_CHOICES
 
+from utils.models import ModelBase
 
-class Exercise(models.Model):
+
+class Exercise(ModelBase):
     name = models.CharField(max_length=128, unique=False)
     time = models.DurationField()
     difficulty = models.CharField(max_length=64, choices=C_DIFFICULTY_CHOICES)
@@ -14,7 +16,7 @@ class Exercise(models.Model):
         return obj.time.total_seconds()
 
 
-class ClassRoom(models.Model):
+class ClassRoom(ModelBase):
     name = models.CharField(max_length=128, unique=True)
     code = models.CharField(max_length=16, unique=True)
     exercises = models.ManyToManyField(Exercise, blank=True)

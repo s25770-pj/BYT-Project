@@ -5,8 +5,9 @@ app_name = 'api_tests'
 
 urlpatterns = [
     # classes
-    path('class_room/create/', CreateClassView.as_view(), name='create_class'),
-    path('class_room/all/', GetClassRoomsListApiView.as_view(), name='class_room_list'),
+    path('create/', CreateClassView.as_view(), name='create_class'),
+    path('get/all/', GetClassRoomsListApiView.as_view(), name='class_room_list'),
     # exercises
-    path('class_room/exercise/all/', GetExercisesListApiView.as_view(), name='exercises_list'),
+    path('exercise/create/', CreateExerciseApiView.as_view(), name='create_exercise'),
+    path('exercise/all/', GetExercisesListApiView.as_view(), name='exercises_list'),
 ]

@@ -45,7 +45,7 @@ class LogoutView(generics.DestroyAPIView):
         return Response({'detail': 'Logout successful.'}, status=status.HTTP_200_OK)
 
 
-class UserDataListView(generics.RetrieveUpdateAPIView):
+class UserDataListView(generics.RetrieveAPIView):
     serializer_class = GetUserSerializer
     permission_classes = [IsAuthenticated]
 
