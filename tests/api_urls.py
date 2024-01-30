@@ -1,4 +1,4 @@
-from .api_views import GetExercisesListApiView, GetClassRoomsListApiView, CreateClassView
+from .api_views import GetExercisesListApiView, GetClassRoomsListApiView, CreateClassView, CreateExerciseApiView
 from django.urls import path
 
 app_name = 'api_tests'

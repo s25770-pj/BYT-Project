@@ -1,5 +1,3 @@
-from django.db import transaction
-
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -32,11 +30,9 @@ class CreateClassView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         user = self.request.user
-        with transaction.atomic():
-            try:
-                if user and serializer.is_valid():
-                    validated_data = serializer.validated_data
-                    return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
+        if serializer.is_valid():
+            validated_data = serializer.validated_data
+            return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
 
 
 class CreateExerciseApiView(generics.CreateAPIView):
@@ -45,8 +41,6 @@ class CreateExerciseApiView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         user = self.request.user
-        with transaction.atomic():
-            try:
-                if user and serializer.is_valid():
-                    validated_data = serializer.validated_data
-                    return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
+        if user and serializer.is_valid():
+            validated_data = serializer.validated_data
+            return Response(create_instance(serializer, user, validated_data), status=status.HTTP_201_CREATED)
