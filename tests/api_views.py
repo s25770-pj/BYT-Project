@@ -26,7 +26,7 @@ class GetClassRoomsListApiView(generics.ListAPIView):
 
 class CreateClassView(generics.CreateAPIView):
     serializer_class = ClassRoomSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -37,7 +37,7 @@ class CreateClassView(generics.CreateAPIView):
 
 class CreateExerciseApiView(generics.CreateAPIView):
     serializer_class = ExerciseSerializer
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
         user = self.request.user
